@@ -1,0 +1,132 @@
+﻿@model SystemSetting
+@{
+    ViewBag.MapPath = "System";
+    bool hasDep = false;
+    if (ViewBag.DepList != null)
+    {
+        hasDep = true;
+    }
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="main-form" role="form" class="form-horizontal" method="post" enctype="multipart/form-data" action="@Url.Action("Save")">
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">Sender Email</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.SenderEmail, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.SenderEmail)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">Sender Display Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.SenderDisplayName, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.SenderDisplayName)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">Auth Type</label>
+                    <div class="col-sm-10">
+                        <select class="" id="SmtpAuthType" name="SmtpAuthType">
+                            <option value="-1"></option>
+                            @foreach (var item in Enum.GetValues(typeof(EASendMail.SmtpAuthType)))
+                            {
+                                <option value="@((int)item)" @(Model != null && (int)Model.SmtpAuthType == (int)item ? "selected" : "" )>@item</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">SMTP Host</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.SMTPHost, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.SMTPHost)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">SMTP User Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.SMTPUserName, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.SMTPUserName)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">Port</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Port, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.Port)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">SMTP User Password</label>
+                    <div class="col-sm-10">
+                        @Html.PasswordFor(model => model.SMTPUserPassword, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.SMTPUserPassword)
+                        </span>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="button" id="send">
+                            @Language.Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/Content/bootstrap-tag.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.menu-System').addClass('active');           
+
+            $('#send').click(function () {
+
+                var data = {};
+                data["SenderEmail"] = $('#SenderEmail').val();
+                data["SenderDisplayName"] = $('#SenderDisplayName').val();
+                data["SMTPHost"] = $('#SMTPHost').val();
+                data["Port"] = $('#Port').val();
+                data["SMTPUserName"] = $('#SMTPUserName').val();
+                data["SMTPUserPassword"] = $('#SMTPUserPassword').val();
+                data["CertFileName"] = $('#CertFileName').val();
+                data["CertFilePassword"] = $('#CertFilePassword').val();
+                data["GoogleAPIKey"] = $('#GoogleAPIKey').val();
+                data["SmtpAuthType"] = $('#SmtpAuthType').val();
+                data["DepList"] = $('#DepList').val();
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "@Url.Action("Save")",
+                    data: { data: data },
+                    success: function (data) {
+                        if (!data.Success) {
+                            alert(data.Message);
+                        }
+                        else {
+                            alert('Success!');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

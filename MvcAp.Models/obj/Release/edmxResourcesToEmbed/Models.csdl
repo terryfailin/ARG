@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Bayer_ARGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BUCatalogList" EntityType="Bayer_ARGModel.BUCatalogList" />
+    <EntitySet Name="ColumnType" EntityType="Bayer_ARGModel.ColumnType" />
+    <EntitySet Name="DbConfig" EntityType="Bayer_ARGModel.DbConfig" />
+    <EntitySet Name="Department" EntityType="Bayer_ARGModel.Department" />
+    <EntitySet Name="Event" EntityType="Bayer_ARGModel.Event" />
+    <EntitySet Name="EventDropList" EntityType="Bayer_ARGModel.EventDropList" />
+    <EntitySet Name="EventRegist" EntityType="Bayer_ARGModel.EventRegist" />
+    <EntitySet Name="EventSign" EntityType="Bayer_ARGModel.EventSign" />
+    <EntitySet Name="MenuCategory" EntityType="Bayer_ARGModel.MenuCategory" />
+    <EntitySet Name="PostalData" EntityType="Bayer_ARGModel.PostalData" />
+    <EntitySet Name="SystemManuFunctions" EntityType="Bayer_ARGModel.SystemManuFunctions" />
+    <EntitySet Name="SystemMenu" EntityType="Bayer_ARGModel.SystemMenu" />
+    <EntitySet Name="SystemRole" EntityType="Bayer_ARGModel.SystemRole" />
+    <EntitySet Name="SystemRoleMenus" EntityType="Bayer_ARGModel.SystemRoleMenus" />
+    <EntitySet Name="SystemUser" EntityType="Bayer_ARGModel.SystemUser" />
+    <EntitySet Name="SystemUserRoles" EntityType="Bayer_ARGModel.SystemUserRoles" />
+    <AssociationSet Name="FK_EventSign_ColumnType" Association="Bayer_ARGModel.FK_EventSign_ColumnType">
+      <End Role="ColumnType" EntitySet="ColumnType" />
+      <End Role="EventSign" EntitySet="EventSign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_SystemUser" Association="Bayer_ARGModel.FK_Event_SystemUser">
+      <End Role="SystemUser" EntitySet="SystemUser" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventRegist_Event" Association="Bayer_ARGModel.FK_EventRegist_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventRegist" EntitySet="EventRegist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventSign_Event" Association="Bayer_ARGModel.FK_EventSign_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventSign" EntitySet="EventSign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventDropList_EventSign" Association="Bayer_ARGModel.FK_EventDropList_EventSign">
+      <End Role="EventSign" EntitySet="EventSign" />
+      <End Role="EventDropList" EntitySet="EventDropList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemMenu_MenuCategory_ID" Association="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID">
+      <End Role="MenuCategory" EntitySet="MenuCategory" />
+      <End Role="SystemMenu" EntitySet="SystemMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemManuFunctions_SystemMenu_ID" Association="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID">
+      <End Role="SystemMenu" EntitySet="SystemMenu" />
+      <End Role="SystemManuFunctions" EntitySet="SystemManuFunctions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemRoleMenus_SystemMenu_ID" Association="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID">
+      <End Role="SystemMenu" EntitySet="SystemMenu" />
+      <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemRoleMenus_SystemRole_ID" Association="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID">
+      <End Role="SystemRole" EntitySet="SystemRole" />
+      <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUserRoles_SystemRole_ID" Association="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID">
+      <End Role="SystemRole" EntitySet="SystemRole" />
+      <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUserRoles_SystemUser_ID" Association="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID">
+      <End Role="SystemUser" EntitySet="SystemUser" />
+      <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+    </AssociationSet>
+    <EntitySet Name="Agreement" EntityType="Bayer_ARGModel.Agreement" />
+  </EntityContainer>
+  <EntityType Name="BUCatalogList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DepId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ColumnType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EventSign" Relationship="Bayer_ARGModel.FK_EventSign_ColumnType" FromRole="ColumnType" ToRole="EventSign" />
+  </EntityType>
+  <EntityType Name="DbConfig">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="KeyName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MasterEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="EventStart" Type="DateTime" Precision="3" />
+    <Property Name="EventEnd" Type="DateTime" Precision="3" />
+    <Property Name="SignStart" Type="DateTime" Precision="3" />
+    <Property Name="SignEnd" Type="DateTime" Precision="3" />
+    <Property Name="IsOpen" Type="Boolean" Nullable="false" />
+    <Property Name="IsNumLimited" Type="Boolean" Nullable="false" />
+    <Property Name="LimitedNum" Type="Int32" />
+    <Property Name="SendNote" Type="Byte" />
+    <Property Name="CfmEmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Agreement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPwLimited" Type="Boolean" Nullable="false" />
+    <Property Name="LimitedPw" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="TitleImgPath" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ViewNum" Type="Int32" />
+    <Property Name="IsChangeViewNum" Type="Boolean" Nullable="false" />
+    <Property Name="DepId" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SystemUser" Relationship="Bayer_ARGModel.FK_Event_SystemUser" FromRole="Event" ToRole="SystemUser" />
+    <NavigationProperty Name="EventRegist" Relationship="Bayer_ARGModel.FK_EventRegist_Event" FromRole="Event" ToRole="EventRegist" />
+    <NavigationProperty Name="EventSign" Relationship="Bayer_ARGModel.FK_EventSign_Event" FromRole="Event" ToRole="EventSign" />
+    <Property Name="QRcodeMode" Type="Int32" />
+    <Property Name="QRCodePassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EventDropList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventSignId" Type="Int32" Nullable="false" />
+    <Property Name="RowValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="EventSign" Relationship="Bayer_ARGModel.FK_EventDropList_EventSign" FromRole="EventDropList" ToRole="EventSign" />
+  </EntityType>
+  <EntityType Name="EventRegist">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <Property Name="OrderNum" Type="Int32" />
+    <Property Name="Text01" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Text02" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text03" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text04" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text05" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text06" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text07" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text08" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text09" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text10" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text11" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text12" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text13" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text14" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text15" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text16" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text17" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text18" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text19" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text20" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text21" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text22" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text23" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text24" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text25" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text26" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text27" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text28" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text29" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text30" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsAttend" Type="Boolean" />
+    <Property Name="IsContact" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ContactDate" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Event" Relationship="Bayer_ARGModel.FK_EventRegist_Event" FromRole="EventRegist" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="EventSign">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MinLen" Type="Int32" />
+    <Property Name="MaxLen" Type="Int32" />
+    <Property Name="IsRequired" Type="Boolean" />
+    <Property Name="OrderNum" Type="Int32" />
+    <Property Name="UseType" Type="Byte" />
+    <NavigationProperty Name="ColumnType" Relationship="Bayer_ARGModel.FK_EventSign_ColumnType" FromRole="EventSign" ToRole="ColumnType" />
+    <NavigationProperty Name="Event" Relationship="Bayer_ARGModel.FK_EventSign_Event" FromRole="EventSign" ToRole="Event" />
+    <NavigationProperty Name="EventDropList" Relationship="Bayer_ARGModel.FK_EventDropList_EventSign" FromRole="EventSign" ToRole="EventDropList" />
+  </EntityType>
+  <EntityType Name="MenuCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="IconName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SystemMenu" Relationship="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID" FromRole="MenuCategory" ToRole="SystemMenu" />
+  </EntityType>
+  <EntityType Name="PostalData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="County" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="Int16" />
+    <Property Name="CountySort" Type="Byte" />
+    <Property Name="CitySort" Type="Int16" />
+    <Property Name="IsEnable" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SystemManuFunctions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ActionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MenuID" Type="Int32" Nullable="false" />
+    <Property Name="IsIndex" Type="Boolean" Nullable="false" />
+    <Property Name="AuthorizeFor" Type="Byte" />
+    <Property Name="IsBlank" Type="Boolean" />
+    <NavigationProperty Name="SystemMenu" Relationship="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID" FromRole="SystemManuFunctions" ToRole="SystemMenu" />
+  </EntityType>
+  <EntityType Name="SystemMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="IconName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MenuCategory" Relationship="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID" FromRole="SystemMenu" ToRole="MenuCategory" />
+    <NavigationProperty Name="SystemManuFunctions" Relationship="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID" FromRole="SystemMenu" ToRole="SystemManuFunctions" />
+    <NavigationProperty Name="SystemRoleMenus" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID" FromRole="SystemMenu" ToRole="SystemRoleMenus" />
+  </EntityType>
+  <EntityType Name="SystemRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+    <Property Name="CreateBy" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SystemRoleMenus" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID" FromRole="SystemRole" ToRole="SystemRoleMenus" />
+    <NavigationProperty Name="SystemUserRoles" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID" FromRole="SystemRole" ToRole="SystemUserRoles" />
+  </EntityType>
+  <EntityType Name="SystemRoleMenus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SystemMenu" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID" FromRole="SystemRoleMenus" ToRole="SystemMenu" />
+    <NavigationProperty Name="SystemRole" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID" FromRole="SystemRoleMenus" ToRole="SystemRole" />
+  </EntityType>
+  <EntityType Name="SystemUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UserCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DepId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Bayer_ARGModel.FK_Event_SystemUser" FromRole="SystemUser" ToRole="Event" />
+    <NavigationProperty Name="SystemUserRoles" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID" FromRole="SystemUser" ToRole="SystemUserRoles" />
+  </EntityType>
+  <EntityType Name="SystemUserRoles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SystemRole" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID" FromRole="SystemUserRoles" ToRole="SystemRole" />
+    <NavigationProperty Name="SystemUser" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID" FromRole="SystemUserRoles" ToRole="SystemUser" />
+  </EntityType>
+  <Association Name="FK_EventSign_ColumnType">
+    <End Type="Bayer_ARGModel.ColumnType" Role="ColumnType" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.EventSign" Role="EventSign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ColumnType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventSign">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_SystemUser">
+    <End Type="Bayer_ARGModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.Event" Role="Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventRegist_Event">
+    <End Type="Bayer_ARGModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.EventRegist" Role="EventRegist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventRegist">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventSign_Event">
+    <End Type="Bayer_ARGModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.EventSign" Role="EventSign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventSign">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventDropList_EventSign">
+    <End Type="Bayer_ARGModel.EventSign" Role="EventSign" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.EventDropList" Role="EventDropList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventSign">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventDropList">
+        <PropertyRef Name="EventSignId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemMenu_MenuCategory_ID">
+    <End Type="Bayer_ARGModel.MenuCategory" Role="MenuCategory" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.SystemMenu" Role="SystemMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemMenu">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemManuFunctions_SystemMenu_ID">
+    <End Type="Bayer_ARGModel.SystemMenu" Role="SystemMenu" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.SystemManuFunctions" Role="SystemManuFunctions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemManuFunctions">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemRoleMenus_SystemMenu_ID">
+    <End Type="Bayer_ARGModel.SystemMenu" Role="SystemMenu" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.SystemRoleMenus" Role="SystemRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemRoleMenus">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemRoleMenus_SystemRole_ID">
+    <End Type="Bayer_ARGModel.SystemRole" Role="SystemRole" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.SystemRoleMenus" Role="SystemRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemRoleMenus">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUserRoles_SystemRole_ID">
+    <End Type="Bayer_ARGModel.SystemRole" Role="SystemRole" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.SystemUserRoles" Role="SystemUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUserRoles_SystemUser_ID">
+    <End Type="Bayer_ARGModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+    <End Type="Bayer_ARGModel.SystemUserRoles" Role="SystemUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Agreement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPublish" Type="Boolean" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+  </EntityType>
+</Schema>

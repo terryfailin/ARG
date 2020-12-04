@@ -1,0 +1,12 @@
+2018-08-27 12:16:30.0073 MvcAp.Controllers.AuthorizeController ChangePassword：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AuthorizeService.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AuthorizeService.cs: 行 83
+   於 MvcAp.Controllers.AuthorizeController.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AuthorizeController.cs: 行 90
+2018-08-27 12:16:50.3812 MvcAp.Controllers.AuthorizeController ChangePassword：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AuthorizeService.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AuthorizeService.cs: 行 83
+   於 MvcAp.Controllers.AuthorizeController.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AuthorizeController.cs: 行 90
+2018-08-27 12:18:04.8202 MvcAp.Controllers.AuthorizeController ChangePassword：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AuthorizeService.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AuthorizeService.cs: 行 83
+   於 MvcAp.Controllers.AuthorizeController.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AuthorizeController.cs: 行 90
+2018-08-27 12:18:59.4894 MvcAp.Controllers.AuthorizeController ChangePassword：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AuthorizeService.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AuthorizeService.cs: 行 83
+   於 MvcAp.Controllers.AuthorizeController.ChangePassword(String oldPassword, String newPassword) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AuthorizeController.cs: 行 90

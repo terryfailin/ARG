@@ -1,0 +1,45 @@
+﻿@charset "utf-8";
+/* FRAME */
+
+.matchEditor {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 500px) {
+}
+/* 400以下  固定 400  顯示手機板*/
+@media screen and (max-width: 400px) {
+}
+.regListTD {
+    width: 91px;
+}
+.infoDiv {
+    width: 220px; 
+    z-index: 10; 
+    cursor: default;
+    padding: 10px;
+    background-color: #333;
+    }
+    .infoDiv.nodeDiv {
+        padding: 10px; 
+        background: rgba(65, 65, 65, 0.95); 
+        margin-bottom: 8px; 
+        border-radius: 1px; 
+        position: relative; 
+        zoom: 1;
+    }
+    .infoDiv h2 {
+        font-size:14px; 
+        color:#eda3a4; 
+        display:block;
+    }
+    .infoDiv p {
+        font-size:14px;
+        margin-top:2px;color:#fff; 
+        display:block;
+    }
+#map_canvas img{max-width:none}

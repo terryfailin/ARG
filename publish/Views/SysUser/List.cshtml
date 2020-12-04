@@ -1,0 +1,60 @@
+﻿@model IPagedList<UserViewModel>
+@{
+    Layout = null;
+}
+@Ajax.SetContainer()
+<table id="main-table" class="dataTable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th><input type="checkbox" class="cbx select-all" /> Select</th>
+            @Ajax.SortColumn("Email", "E-Mail")
+            @Ajax.SortColumn("Account", "Account")
+            <th>Department</th>
+            @Ajax.SortColumn("GroupName", "Role")
+            <th>Is Enable</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="cbx-row" sourceid="@item.ID" />
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Account
+                        </td>
+                        <td>
+                            @item.DepartmentName
+                        </td>
+                        <td>
+                            @(item.GroupName)
+                        </td>
+                        <td>
+                            @(item.IsEnable ? "YES" : "NO")
+                        </td>
+                        <td>
+                            <div class="hidden-sm hidden-xs btn-group" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <a class="btn btn-sm btn-info btn-edit" href="@Url.Action("Edit", "SysUser")?sourceid=@(item.ID)" >
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td colspan="" class="text-center no-data">@Language.NoData</td></tr>
+            }
+        }
+    </tbody>
+</table>
+@Ajax.PagerContainer()

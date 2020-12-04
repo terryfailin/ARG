@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+@model Event
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>@(string.IsNullOrEmpty(ViewBag.Title) ? AppHelper.ProjectName : ViewBag.Title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+
+    <link rel="stylesheet" href="/assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.min.css"  id="main-ace-style" />
+    
+    <link rel="stylesheet" href="/assets/css/all.css" />
+
+</head>
+<body class="no-skin nonBackground">
+<div class="container">
+    <div class="row" style="margin-top: 15px">
+        <div class="col-md-12 center">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="center">
+                    @Html.Raw(Model.Content)                    
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <div class="row">        
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="center">
+                    @if (ViewBag.IsExpired)
+                    {
+                        <a class="btn btn-warning">
+                            <i class="ace-icon fa"></i>
+                            報名已截止
+                        </a>
+                    }
+                    else if (ViewBag.IsRegFull)
+                    {
+                        <a class="btn btn-warning">
+                            <i class="ace-icon fa"></i>
+                            報名人數已額滿
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Sign", new {eventCode = Model.Code, userid = string.IsNullOrEmpty(ViewBag.userid.ToString()) ? 0 : ViewBag.userid})" class="btn btn-success">
+                            <i class="ace-icon fa fa-arrow-right"></i>
+                            前往報名
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div>
+
+<!-- ace scripts -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="/assets/js/ace.min.js"></script>
+    <script src="/assets/js/ace-elements.min.js"></script>
+</body>
+</html>
+

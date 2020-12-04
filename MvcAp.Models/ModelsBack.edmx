@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="MvcAp.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.Agreement' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Contents" Nullable="false" MaxLength="4000" Type="nvarchar" />
+          <Property Name="IsPublish" Nullable="false" Type="bit" />
+          <Property Name="Version" Nullable="false" Type="int" />
+          <Property Name="CreateDate" Nullable="false" Type="datetime" />
+          <Property Name="CreateBy" Nullable="false" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.BUCatalogList' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="BUCatalogList">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="DepId" Nullable="false" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.ColumnType' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="ColumnType">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TypeName" Nullable="false" MaxLength="50" Type="nvarchar" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.DbConfig' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="DbConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Type" Nullable="false" MaxLength="30" Type="nvarchar" />
+          <Property Name="KeyName" Nullable="false" MaxLength="30" Type="nvarchar" />
+          <Property Name="Value" Nullable="false" MaxLength="4000" Type="nvarchar" />
+          <Property Name="IsEnable" Nullable="false" Type="bit" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.Department' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="DepName" Nullable="false" MaxLength="50" Type="nvarchar" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.Event' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="Code" MaxLength="50" Type="nvarchar" />
+          <Property Name="Title" MaxLength="100" Type="nvarchar" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="EmailContent" Type="nvarchar(max)" />
+          <Property Name="MasterEmail" MaxLength="60" Type="nvarchar" />
+          <Property Name="EventStart" Type="datetime" />
+          <Property Name="EventEnd" Type="datetime" />
+          <Property Name="SignStart" Type="datetime" />
+          <Property Name="SignEnd" Type="datetime" />
+          <Property Name="IsOpen" Nullable="false" Type="bit" />
+          <Property Name="IsNumLimited" Nullable="false" Type="bit" />
+          <Property Name="LimitedNum" Type="int" />
+          <Property Name="SendNote" Type="tinyint" />
+          <Property Name="CfmEmailContent" Type="nvarchar(max)" />
+          <Property Name="Agreement" Type="nvarchar(max)" />
+          <Property Name="IsPwLimited" Nullable="false" Type="bit" />
+          <Property Name="LimitedPw" MaxLength="50" Type="nvarchar" />
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="TitleImgPath" MaxLength="150" Type="nvarchar" />
+          <Property Name="ViewNum" Type="int" />
+          <Property Name="IsChangeViewNum" Nullable="false" Type="bit" />
+          <Property Name="DepId" Type="int" />
+          <Property Name="Address" MaxLength="255" Type="nvarchar" />
+          <Property Name="QRcodeMode" Type="int" />
+          <Property Name="QRCodePassword" MaxLength="20" Type="nvarchar" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.EventDropList' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="EventDropList">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="EventSignId" Nullable="false" Type="int" />
+          <Property Name="RowValue" Nullable="false" MaxLength="200" Type="nvarchar" />
+          <Property Name="IsDefault" Nullable="false" Type="bit" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.EventRegist' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="EventRegist">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="EventId" Nullable="false" Type="int" />
+          <Property Name="OrderNum" Nullable="false" Type="int" />
+          <Property Name="Text01" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text02" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text03" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text04" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text05" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text06" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text07" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text08" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text09" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text10" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text11" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text12" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text13" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text14" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text15" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text16" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text17" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text18" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text19" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text20" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text21" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text22" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text23" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text24" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text25" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text26" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text27" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text28" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text29" MaxLength="200" Type="nvarchar" />
+          <Property Name="Text30" MaxLength="200" Type="nvarchar" />
+          <Property Name="IP" MaxLength="20" Type="nvarchar" />
+          <Property Name="IsAttend" Nullable="false" Type="bit" />
+          <Property Name="IsContact" Nullable="false" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ContactDate" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.EventSign' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="EventSign">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="EventId" Nullable="false" Type="int" />
+          <Property Name="TypeId" Nullable="false" Type="int" />
+          <Property Name="Title" Nullable="false" MaxLength="200" Type="nvarchar" />
+          <Property Name="MinLen" Type="int" />
+          <Property Name="MaxLen" Type="int" />
+          <Property Name="IsRequired" Type="bit" />
+          <Property Name="OrderNum" Type="int" />
+          <Property Name="UseType" Type="tinyint" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.MenuCategory' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="IsEnable" Nullable="false" Type="bit" />
+          <Property Name="Sort" Nullable="false" Type="int" />
+          <Property Name="IconName" MaxLength="15" Type="nvarchar" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.PostalData' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="PostalData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="County" MaxLength="15" Type="nvarchar" />
+          <Property Name="City" MaxLength="20" Type="nvarchar" />
+          <Property Name="PostalCode" Type="smallint" />
+          <Property Name="CountySort" Type="tinyint" />
+          <Property Name="CitySort" Type="smallint" />
+          <Property Name="IsEnable" Type="bit" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.SystemManuFunctions' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="SystemManuFunctions">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ControllerName" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="ActionName" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="MenuID" Nullable="false" Type="int" />
+          <Property Name="IsIndex" Nullable="false" Type="bit" />
+          <Property Name="AuthorizeFor" Type="tinyint" />
+          <Property Name="IsBlank" Type="bit" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.SystemMenu' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="SystemMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="IsEnable" Nullable="false" Type="bit" />
+          <Property Name="Sort" Nullable="false" Type="int" />
+          <Property Name="CategoryID" Nullable="false" Type="int" />
+          <Property Name="IconName" MaxLength="15" Type="nvarchar" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.SystemRole' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="SystemRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="IsEnable" Nullable="false" Type="bit" />
+          <Property Name="CreateBy" Nullable="false" Type="int" />
+          <Property Name="CreateDate" Nullable="false" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DisplayName" MaxLength="50" Type="nvarchar" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.SystemRoleMenus' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="SystemRoleMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="RoleId" Nullable="false" Type="int" />
+          <Property Name="MenuId" Nullable="false" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.SystemUser' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="100" Type="nvarchar" />
+          <Property Name="Email" MaxLength="100" Type="nvarchar" />
+          <Property Name="Account" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="Password" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="IsEnable" Nullable="false" Type="bit" />
+          <Property Name="CreateDate" Type="smalldatetime" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="UpdatedDate" Type="smalldatetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UserCode" MaxLength="10" Type="nvarchar" />
+          <Property Name="DepId" Nullable="false" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Bayer_ARG.dbo.SystemUserRoles' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="SystemUserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="RoleId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityContainer Name="MvcApModelsStoreContainer">
+          <EntitySet Name="Agreement" EntityType="Self.Agreement" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Agreement].[ID] AS [ID], 
+    [Agreement].[Contents] AS [Contents], 
+    [Agreement].[IsPublish] AS [IsPublish], 
+    [Agreement].[Version] AS [Version], 
+    [Agreement].[CreateDate] AS [CreateDate], 
+    [Agreement].[CreateBy] AS [CreateBy], 
+    [Agreement].[UpdatedDate] AS [UpdatedDate], 
+    [Agreement].[UpdatedBy] AS [UpdatedBy]
+    FROM [dbo].[Agreement] AS [Agreement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BUCatalogList" EntityType="Self.BUCatalogList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BUCatalogList].[ID] AS [ID], 
+    [BUCatalogList].[UserId] AS [UserId], 
+    [BUCatalogList].[DepId] AS [DepId]
+    FROM [dbo].[BUCatalogList] AS [BUCatalogList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ColumnType" EntityType="Self.ColumnType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ColumnType].[ID] AS [ID], 
+    [ColumnType].[TypeName] AS [TypeName]
+    FROM [dbo].[ColumnType] AS [ColumnType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DbConfig" EntityType="Self.DbConfig" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DbConfig].[ID] AS [ID], 
+    [DbConfig].[Type] AS [Type], 
+    [DbConfig].[KeyName] AS [KeyName], 
+    [DbConfig].[Value] AS [Value], 
+    [DbConfig].[IsEnable] AS [IsEnable]
+    FROM [dbo].[DbConfig] AS [DbConfig]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Department" EntityType="Self.Department" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Department].[ID] AS [ID], 
+    [Department].[DepName] AS [DepName]
+    FROM [dbo].[Department] AS [Department]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Event" EntityType="Self.Event" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Event].[ID] AS [ID], 
+    [Event].[Name] AS [Name], 
+    [Event].[Code] AS [Code], 
+    [Event].[Title] AS [Title], 
+    [Event].[Content] AS [Content], 
+    [Event].[EmailContent] AS [EmailContent], 
+    [Event].[MasterEmail] AS [MasterEmail], 
+    [Event].[EventStart] AS [EventStart], 
+    [Event].[EventEnd] AS [EventEnd], 
+    [Event].[SignStart] AS [SignStart], 
+    [Event].[SignEnd] AS [SignEnd], 
+    [Event].[IsOpen] AS [IsOpen], 
+    [Event].[IsNumLimited] AS [IsNumLimited], 
+    [Event].[LimitedNum] AS [LimitedNum], 
+    [Event].[SendNote] AS [SendNote], 
+    [Event].[CfmEmailContent] AS [CfmEmailContent], 
+    [Event].[Agreement] AS [Agreement], 
+    [Event].[IsPwLimited] AS [IsPwLimited], 
+    [Event].[LimitedPw] AS [LimitedPw], 
+    [Event].[UserId] AS [UserId], 
+    [Event].[TitleImgPath] AS [TitleImgPath], 
+    [Event].[ViewNum] AS [ViewNum], 
+    [Event].[IsChangeViewNum] AS [IsChangeViewNum], 
+    [Event].[DepId] AS [DepId], 
+    [Event].[Address] AS [Address], 
+    [Event].[QRcodeMode] AS [QRcodeMode], 
+    [Event].[QRCodePassword] AS [QRCodePassword]
+    FROM [dbo].[Event] AS [Event]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EventDropList" EntityType="Self.EventDropList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventDropList].[ID] AS [ID], 
+    [EventDropList].[EventSignId] AS [EventSignId], 
+    [EventDropList].[RowValue] AS [RowValue], 
+    [EventDropList].[IsDefault] AS [IsDefault]
+    FROM [dbo].[EventDropList] AS [EventDropList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EventRegist" EntityType="Self.EventRegist" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventRegist].[ID] AS [ID], 
+    [EventRegist].[EventId] AS [EventId], 
+    [EventRegist].[OrderNum] AS [OrderNum], 
+    [EventRegist].[Text01] AS [Text01], 
+    [EventRegist].[Text02] AS [Text02], 
+    [EventRegist].[Text03] AS [Text03], 
+    [EventRegist].[Text04] AS [Text04], 
+    [EventRegist].[Text05] AS [Text05], 
+    [EventRegist].[Text06] AS [Text06], 
+    [EventRegist].[Text07] AS [Text07], 
+    [EventRegist].[Text08] AS [Text08], 
+    [EventRegist].[Text09] AS [Text09], 
+    [EventRegist].[Text10] AS [Text10], 
+    [EventRegist].[Text11] AS [Text11], 
+    [EventRegist].[Text12] AS [Text12], 
+    [EventRegist].[Text13] AS [Text13], 
+    [EventRegist].[Text14] AS [Text14], 
+    [EventRegist].[Text15] AS [Text15], 
+    [EventRegist].[Text16] AS [Text16], 
+    [EventRegist].[Text17] AS [Text17], 
+    [EventRegist].[Text18] AS [Text18], 
+    [EventRegist].[Text19] AS [Text19], 
+    [EventRegist].[Text20] AS [Text20], 
+    [EventRegist].[Text21] AS [Text21], 
+    [EventRegist].[Text22] AS [Text22], 
+    [EventRegist].[Text23] AS [Text23], 
+    [EventRegist].[Text24] AS [Text24], 
+    [EventRegist].[Text25] AS [Text25], 
+    [EventRegist].[Text26] AS [Text26], 
+    [EventRegist].[Text27] AS [Text27], 
+    [EventRegist].[Text28] AS [Text28], 
+    [EventRegist].[Text29] AS [Text29], 
+    [EventRegist].[Text30] AS [Text30], 
+    [EventRegist].[IP] AS [IP], 
+    [EventRegist].[IsAttend] AS [IsAttend], 
+    [EventRegist].[IsContact] AS [IsContact], 
+    [EventRegist].[CreateDate] AS [CreateDate], 
+    [EventRegist].[ContactDate] AS [ContactDate], 
+    [EventRegist].[UserId] AS [UserId]
+    FROM [dbo].[EventRegist] AS [EventRegist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EventSign" EntityType="Self.EventSign" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventSign].[ID] AS [ID], 
+    [EventSign].[EventId] AS [EventId], 
+    [EventSign].[TypeId] AS [TypeId], 
+    [EventSign].[Title] AS [Title], 
+    [EventSign].[MinLen] AS [MinLen], 
+    [EventSign].[MaxLen] AS [MaxLen], 
+    [EventSign].[IsRequired] AS [IsRequired], 
+    [EventSign].[OrderNum] AS [OrderNum], 
+    [EventSign].[UseType] AS [UseType]
+    FROM [dbo].[EventSign] AS [EventSign]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MenuCategory" EntityType="Self.MenuCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MenuCategory].[ID] AS [ID], 
+    [MenuCategory].[Name] AS [Name], 
+    [MenuCategory].[IsEnable] AS [IsEnable], 
+    [MenuCategory].[Sort] AS [Sort], 
+    [MenuCategory].[IconName] AS [IconName]
+    FROM [dbo].[MenuCategory] AS [MenuCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PostalData" EntityType="Self.PostalData" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PostalData].[ID] AS [ID], 
+    [PostalData].[County] AS [County], 
+    [PostalData].[City] AS [City], 
+    [PostalData].[PostalCode] AS [PostalCode], 
+    [PostalData].[CountySort] AS [CountySort], 
+    [PostalData].[CitySort] AS [CitySort], 
+    [PostalData].[IsEnable] AS [IsEnable]
+    FROM [dbo].[PostalData] AS [PostalData]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemManuFunctions" EntityType="Self.SystemManuFunctions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemManuFunctions].[ID] AS [ID], 
+    [SystemManuFunctions].[ControllerName] AS [ControllerName], 
+    [SystemManuFunctions].[ActionName] AS [ActionName], 
+    [SystemManuFunctions].[MenuID] AS [MenuID], 
+    [SystemManuFunctions].[IsIndex] AS [IsIndex], 
+    [SystemManuFunctions].[AuthorizeFor] AS [AuthorizeFor], 
+    [SystemManuFunctions].[IsBlank] AS [IsBlank]
+    FROM [dbo].[SystemManuFunctions] AS [SystemManuFunctions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemMenu" EntityType="Self.SystemMenu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemMenu].[ID] AS [ID], 
+    [SystemMenu].[Name] AS [Name], 
+    [SystemMenu].[IsEnable] AS [IsEnable], 
+    [SystemMenu].[Sort] AS [Sort], 
+    [SystemMenu].[CategoryID] AS [CategoryID], 
+    [SystemMenu].[IconName] AS [IconName]
+    FROM [dbo].[SystemMenu] AS [SystemMenu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemRole" EntityType="Self.SystemRole" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemRole].[ID] AS [ID], 
+    [SystemRole].[Name] AS [Name], 
+    [SystemRole].[IsEnable] AS [IsEnable], 
+    [SystemRole].[CreateBy] AS [CreateBy], 
+    [SystemRole].[CreateDate] AS [CreateDate], 
+    [SystemRole].[UpdatedBy] AS [UpdatedBy], 
+    [SystemRole].[UpdatedDate] AS [UpdatedDate], 
+    [SystemRole].[DisplayName] AS [DisplayName]
+    FROM [dbo].[SystemRole] AS [SystemRole]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemRoleMenus" EntityType="Self.SystemRoleMenus" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemRoleMenus].[ID] AS [ID], 
+    [SystemRoleMenus].[RoleId] AS [RoleId], 
+    [SystemRoleMenus].[MenuId] AS [MenuId]
+    FROM [dbo].[SystemRoleMenus] AS [SystemRoleMenus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemUser" EntityType="Self.SystemUser" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemUser].[ID] AS [ID], 
+    [SystemUser].[Name] AS [Name], 
+    [SystemUser].[Email] AS [Email], 
+    [SystemUser].[Account] AS [Account], 
+    [SystemUser].[Password] AS [Password], 
+    [SystemUser].[IsEnable] AS [IsEnable], 
+    [SystemUser].[CreateDate] AS [CreateDate], 
+    [SystemUser].[CreateBy] AS [CreateBy], 
+    [SystemUser].[UpdatedDate] AS [UpdatedDate], 
+    [SystemUser].[UpdatedBy] AS [UpdatedBy], 
+    [SystemUser].[UserCode] AS [UserCode], 
+    [SystemUser].[DepId] AS [DepId]
+    FROM [dbo].[SystemUser] AS [SystemUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemUserRoles" EntityType="Self.SystemUserRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemUserRoles].[ID] AS [ID], 
+    [SystemUserRoles].[UserId] AS [UserId], 
+    [SystemUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[SystemUserRoles] AS [SystemUserRoles]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MvcAp.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MvcApEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BUCatalogList" EntityType="MvcAp.Models.BUCatalogList" />
+          <EntitySet Name="ColumnType" EntityType="MvcAp.Models.ColumnType" />
+          <EntitySet Name="DbConfig" EntityType="MvcAp.Models.DbConfig" />
+          <EntitySet Name="EventDropList" EntityType="MvcAp.Models.EventDropList" />
+          <EntitySet Name="EventRegist" EntityType="MvcAp.Models.EventRegist" />
+          <EntitySet Name="EventSign" EntityType="MvcAp.Models.EventSign" />
+          <EntitySet Name="MenuCategory" EntityType="MvcAp.Models.MenuCategory" />
+          <EntitySet Name="PostalData" EntityType="MvcAp.Models.PostalData" />
+          <EntitySet Name="SystemManuFunctions" EntityType="MvcAp.Models.SystemManuFunctions" />
+          <EntitySet Name="SystemMenu" EntityType="MvcAp.Models.SystemMenu" />
+          <EntitySet Name="SystemRole" EntityType="MvcAp.Models.SystemRole" />
+          <EntitySet Name="SystemRoleMenus" EntityType="MvcAp.Models.SystemRoleMenus" />
+          <EntitySet Name="SystemUserRoles" EntityType="MvcAp.Models.SystemUserRoles" />
+          <AssociationSet Name="FK_EventSign_ColumnType" Association="MvcAp.Models.FK_EventSign_ColumnType">
+            <End Role="ColumnType" EntitySet="ColumnType" />
+            <End Role="EventSign" EntitySet="EventSign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventDropList_EventSign" Association="MvcAp.Models.FK_EventDropList_EventSign">
+            <End Role="EventSign" EntitySet="EventSign" />
+            <End Role="EventDropList" EntitySet="EventDropList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemMenu_MenuCategory_ID" Association="MvcAp.Models.FK_SystemMenu_MenuCategory_ID">
+            <End Role="MenuCategory" EntitySet="MenuCategory" />
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemManuFunctions_SystemMenu_ID" Association="MvcAp.Models.FK_SystemManuFunctions_SystemMenu_ID">
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+            <End Role="SystemManuFunctions" EntitySet="SystemManuFunctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemRoleMenus_SystemMenu_ID" Association="MvcAp.Models.FK_SystemRoleMenus_SystemMenu_ID">
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+            <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemRoleMenus_SystemRole_ID" Association="MvcAp.Models.FK_SystemRoleMenus_SystemRole_ID">
+            <End Role="SystemRole" EntitySet="SystemRole" />
+            <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemUserRoles_SystemRole_ID" Association="MvcAp.Models.FK_SystemUserRoles_SystemRole_ID">
+            <End Role="SystemRole" EntitySet="SystemRole" />
+            <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+          </AssociationSet>
+          <EntitySet Name="Department" EntityType="MvcAp.Models.Department" />
+          <EntitySet Name="SystemUser" EntityType="MvcAp.Models.SystemUser" />
+          <AssociationSet Name="FK_SystemUserRoles_SystemUser_ID" Association="MvcAp.Models.FK_SystemUserRoles_SystemUser_ID">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+          </AssociationSet>
+          <EntitySet Name="Event" EntityType="MvcAp.Models.Event" />
+          <AssociationSet Name="FK_Event_SystemUser" Association="MvcAp.Models.FK_Event_SystemUser">
+            <End EntitySet="SystemUser" Role="SystemUser" />
+            <End EntitySet="Event" Role="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventRegist_Event" Association="MvcAp.Models.FK_EventRegist_Event">
+            <End EntitySet="Event" Role="Event" />
+            <End EntitySet="EventRegist" Role="EventRegist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventSign_Event" Association="MvcAp.Models.FK_EventSign_Event">
+            <End EntitySet="Event" Role="Event" />
+            <End EntitySet="EventSign" Role="EventSign" />
+          </AssociationSet>
+          <EntitySet Name="Agreement" EntityType="MvcAp.Models.Agreement" />
+          </EntityContainer>
+        <EntityType Name="BUCatalogList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DepId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColumnType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EventSign" Relationship="MvcAp.Models.FK_EventSign_ColumnType" FromRole="ColumnType" ToRole="EventSign" />
+        </EntityType>
+        <EntityType Name="DbConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KeyName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventDropList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventSignId" Type="Int32" Nullable="false" />
+          <Property Name="RowValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EventSign" Relationship="MvcAp.Models.FK_EventDropList_EventSign" FromRole="EventDropList" ToRole="EventSign" />
+        </EntityType>
+        <EntityType Name="EventRegist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="OrderNum" Type="Int32" Nullable="false" />
+          <Property Name="Text01" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text02" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text03" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text04" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text05" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text06" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text07" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text08" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text09" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text10" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text11" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text12" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text13" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text14" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text15" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text16" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text17" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text18" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text19" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text20" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text21" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text22" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text23" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text24" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text25" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text26" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text27" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text28" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text29" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text30" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsAttend" Type="Boolean" Nullable="false" />
+          <Property Name="IsContact" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ContactDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Event" Relationship="MvcAp.Models.FK_EventRegist_Event" FromRole="EventRegist" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="EventSign">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MinLen" Type="Int32" />
+          <Property Name="MaxLen" Type="Int32" />
+          <Property Name="IsRequired" Type="Boolean" />
+          <Property Name="OrderNum" Type="Int32" />
+          <Property Name="UseType" Type="Byte" />
+          <NavigationProperty Name="ColumnType" Relationship="MvcAp.Models.FK_EventSign_ColumnType" FromRole="EventSign" ToRole="ColumnType" />
+          <NavigationProperty Name="EventDropList" Relationship="MvcAp.Models.FK_EventDropList_EventSign" FromRole="EventSign" ToRole="EventDropList" />
+          <NavigationProperty Name="Event" Relationship="MvcAp.Models.FK_EventSign_Event" FromRole="EventSign" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IconName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SystemMenu" Relationship="MvcAp.Models.FK_SystemMenu_MenuCategory_ID" FromRole="MenuCategory" ToRole="SystemMenu" />
+        </EntityType>
+        <EntityType Name="PostalData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="County" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="Int16" />
+          <Property Name="CountySort" Type="Byte" />
+          <Property Name="CitySort" Type="Int16" />
+          <Property Name="IsEnable" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SystemManuFunctions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="IsIndex" Type="Boolean" Nullable="false" />
+          <Property Name="AuthorizeFor" Type="Byte" />
+          <Property Name="IsBlank" Type="Boolean" />
+          <NavigationProperty Name="SystemMenu" Relationship="MvcAp.Models.FK_SystemManuFunctions_SystemMenu_ID" FromRole="SystemManuFunctions" ToRole="SystemMenu" />
+        </EntityType>
+        <EntityType Name="SystemMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="IconName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuCategory" Relationship="MvcAp.Models.FK_SystemMenu_MenuCategory_ID" FromRole="SystemMenu" ToRole="MenuCategory" />
+          <NavigationProperty Name="SystemManuFunctions" Relationship="MvcAp.Models.FK_SystemManuFunctions_SystemMenu_ID" FromRole="SystemMenu" ToRole="SystemManuFunctions" />
+          <NavigationProperty Name="SystemRoleMenus" Relationship="MvcAp.Models.FK_SystemRoleMenus_SystemMenu_ID" FromRole="SystemMenu" ToRole="SystemRoleMenus" />
+        </EntityType>
+        <EntityType Name="SystemRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateBy" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SystemRoleMenus" Relationship="MvcAp.Models.FK_SystemRoleMenus_SystemRole_ID" FromRole="SystemRole" ToRole="SystemRoleMenus" />
+          <NavigationProperty Name="SystemUserRoles" Relationship="MvcAp.Models.FK_SystemUserRoles_SystemRole_ID" FromRole="SystemRole" ToRole="SystemUserRoles" />
+        </EntityType>
+        <EntityType Name="SystemRoleMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SystemMenu" Relationship="MvcAp.Models.FK_SystemRoleMenus_SystemMenu_ID" FromRole="SystemRoleMenus" ToRole="SystemMenu" />
+          <NavigationProperty Name="SystemRole" Relationship="MvcAp.Models.FK_SystemRoleMenus_SystemRole_ID" FromRole="SystemRoleMenus" ToRole="SystemRole" />
+        </EntityType>
+        <EntityType Name="SystemUserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SystemRole" Relationship="MvcAp.Models.FK_SystemUserRoles_SystemRole_ID" FromRole="SystemUserRoles" ToRole="SystemRole" />
+          <NavigationProperty Name="SystemUser" Relationship="MvcAp.Models.FK_SystemUserRoles_SystemUser_ID" FromRole="SystemUserRoles" ToRole="SystemUser" />
+        </EntityType>
+        <Association Name="FK_EventSign_ColumnType">
+          <End Type="MvcAp.Models.ColumnType" Role="ColumnType" Multiplicity="1" />
+          <End Type="MvcAp.Models.EventSign" Role="EventSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColumnType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventSign">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventDropList_EventSign">
+          <End Type="MvcAp.Models.EventSign" Role="EventSign" Multiplicity="1" />
+          <End Type="MvcAp.Models.EventDropList" Role="EventDropList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventSign">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventDropList">
+              <PropertyRef Name="EventSignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemMenu_MenuCategory_ID">
+          <End Type="MvcAp.Models.MenuCategory" Role="MenuCategory" Multiplicity="1" />
+          <End Type="MvcAp.Models.SystemMenu" Role="SystemMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemMenu">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemManuFunctions_SystemMenu_ID">
+          <End Type="MvcAp.Models.SystemMenu" Role="SystemMenu" Multiplicity="1" />
+          <End Type="MvcAp.Models.SystemManuFunctions" Role="SystemManuFunctions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemManuFunctions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemRoleMenus_SystemMenu_ID">
+          <End Type="MvcAp.Models.SystemMenu" Role="SystemMenu" Multiplicity="1" />
+          <End Type="MvcAp.Models.SystemRoleMenus" Role="SystemRoleMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemRoleMenus">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemRoleMenus_SystemRole_ID">
+          <End Type="MvcAp.Models.SystemRole" Role="SystemRole" Multiplicity="1" />
+          <End Type="MvcAp.Models.SystemRoleMenus" Role="SystemRoleMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemRoleMenus">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemUserRoles_SystemRole_ID">
+          <End Type="MvcAp.Models.SystemRole" Role="SystemRole" Multiplicity="1" />
+          <End Type="MvcAp.Models.SystemUserRoles" Role="SystemUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UserCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DepId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SystemUserRoles" Relationship="MvcAp.Models.FK_SystemUserRoles_SystemUser_ID" FromRole="SystemUser" ToRole="SystemUserRoles" />
+          <NavigationProperty Name="Event" Relationship="MvcAp.Models.FK_Event_SystemUser" FromRole="SystemUser" ToRole="Event" />
+        </EntityType>
+        <Association Name="FK_SystemUserRoles_SystemUser_ID">
+          <End Type="MvcAp.Models.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="MvcAp.Models.SystemUserRoles" Role="SystemUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Code" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Title" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Content" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="EmailContent" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="MasterEmail" MaxLength="60" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="EventStart" Precision="3" Type="DateTime" />
+          <Property Name="EventEnd" Precision="3" Type="DateTime" />
+          <Property Name="SignStart" Precision="3" Type="DateTime" />
+          <Property Name="SignEnd" Precision="3" Type="DateTime" />
+          <Property Name="IsOpen" Nullable="false" Type="Boolean" />
+          <Property Name="IsNumLimited" Nullable="false" Type="Boolean" />
+          <Property Name="LimitedNum" Type="Int32" />
+          <Property Name="SendNote" Type="Byte" />
+          <Property Name="CfmEmailContent" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Agreement" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="IsPwLimited" Nullable="false" Type="Boolean" />
+          <Property Name="LimitedPw" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="UserId" Nullable="false" Type="Int32" />
+          <Property Name="TitleImgPath" MaxLength="150" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ViewNum" Type="Int32" />
+          <Property Name="IsChangeViewNum" Nullable="false" Type="Boolean" />
+          <Property Name="DepId" Type="Int32" />
+          <NavigationProperty Name="SystemUser" Relationship="MvcAp.Models.FK_Event_SystemUser" FromRole="Event" ToRole="SystemUser" />
+          <NavigationProperty Name="EventRegist" Relationship="MvcAp.Models.FK_EventRegist_Event" FromRole="Event" ToRole="EventRegist" />
+          <NavigationProperty Name="EventSign" Relationship="MvcAp.Models.FK_EventSign_Event" FromRole="Event" ToRole="EventSign" />
+          <Property Name="Address" MaxLength="255" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="QRcodeMode" Type="Int32" />
+          <Property Name="QRCodePassword" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <Association Name="FK_Event_SystemUser">
+          <End Type="MvcAp.Models.SystemUser" Multiplicity="1" Role="SystemUser" />
+          <End Type="MvcAp.Models.Event" Multiplicity="*" Role="Event" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventRegist_Event">
+          <End Type="MvcAp.Models.Event" Multiplicity="1" Role="Event" />
+          <End Type="MvcAp.Models.EventRegist" Multiplicity="*" Role="EventRegist" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventRegist">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventSign_Event">
+          <End Type="MvcAp.Models.Event" Multiplicity="1" Role="Event" />
+          <End Type="MvcAp.Models.EventSign" Multiplicity="*" Role="EventSign" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventSign">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublish" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MvcApModelsStoreContainer" CdmEntityContainer="MvcApEntities">
+          <EntitySetMapping Name="BUCatalogList">
+            <EntityTypeMapping TypeName="MvcAp.Models.BUCatalogList">
+              <MappingFragment StoreEntitySet="BUCatalogList">
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColumnType">
+            <EntityTypeMapping TypeName="MvcAp.Models.ColumnType">
+              <MappingFragment StoreEntitySet="ColumnType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DbConfig">
+            <EntityTypeMapping TypeName="MvcAp.Models.DbConfig">
+              <MappingFragment StoreEntitySet="DbConfig">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventDropList">
+            <EntityTypeMapping TypeName="MvcAp.Models.EventDropList">
+              <MappingFragment StoreEntitySet="EventDropList">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="RowValue" ColumnName="RowValue" />
+                <ScalarProperty Name="EventSignId" ColumnName="EventSignId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventRegist">
+            <EntityTypeMapping TypeName="MvcAp.Models.EventRegist">
+              <MappingFragment StoreEntitySet="EventRegist">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContactDate" ColumnName="ContactDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsContact" ColumnName="IsContact" />
+                <ScalarProperty Name="IsAttend" ColumnName="IsAttend" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Text30" ColumnName="Text30" />
+                <ScalarProperty Name="Text29" ColumnName="Text29" />
+                <ScalarProperty Name="Text28" ColumnName="Text28" />
+                <ScalarProperty Name="Text27" ColumnName="Text27" />
+                <ScalarProperty Name="Text26" ColumnName="Text26" />
+                <ScalarProperty Name="Text25" ColumnName="Text25" />
+                <ScalarProperty Name="Text24" ColumnName="Text24" />
+                <ScalarProperty Name="Text23" ColumnName="Text23" />
+                <ScalarProperty Name="Text22" ColumnName="Text22" />
+                <ScalarProperty Name="Text21" ColumnName="Text21" />
+                <ScalarProperty Name="Text20" ColumnName="Text20" />
+                <ScalarProperty Name="Text19" ColumnName="Text19" />
+                <ScalarProperty Name="Text18" ColumnName="Text18" />
+                <ScalarProperty Name="Text17" ColumnName="Text17" />
+                <ScalarProperty Name="Text16" ColumnName="Text16" />
+                <ScalarProperty Name="Text15" ColumnName="Text15" />
+                <ScalarProperty Name="Text14" ColumnName="Text14" />
+                <ScalarProperty Name="Text13" ColumnName="Text13" />
+                <ScalarProperty Name="Text12" ColumnName="Text12" />
+                <ScalarProperty Name="Text11" ColumnName="Text11" />
+                <ScalarProperty Name="Text10" ColumnName="Text10" />
+                <ScalarProperty Name="Text09" ColumnName="Text09" />
+                <ScalarProperty Name="Text08" ColumnName="Text08" />
+                <ScalarProperty Name="Text07" ColumnName="Text07" />
+                <ScalarProperty Name="Text06" ColumnName="Text06" />
+                <ScalarProperty Name="Text05" ColumnName="Text05" />
+                <ScalarProperty Name="Text04" ColumnName="Text04" />
+                <ScalarProperty Name="Text03" ColumnName="Text03" />
+                <ScalarProperty Name="Text02" ColumnName="Text02" />
+                <ScalarProperty Name="Text01" ColumnName="Text01" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventSign">
+            <EntityTypeMapping TypeName="MvcAp.Models.EventSign">
+              <MappingFragment StoreEntitySet="EventSign">
+                <ScalarProperty Name="UseType" ColumnName="UseType" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="MaxLen" ColumnName="MaxLen" />
+                <ScalarProperty Name="MinLen" ColumnName="MinLen" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCategory">
+            <EntityTypeMapping TypeName="MvcAp.Models.MenuCategory">
+              <MappingFragment StoreEntitySet="MenuCategory">
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostalData">
+            <EntityTypeMapping TypeName="MvcAp.Models.PostalData">
+              <MappingFragment StoreEntitySet="PostalData">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="CitySort" ColumnName="CitySort" />
+                <ScalarProperty Name="CountySort" ColumnName="CountySort" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemManuFunctions">
+            <EntityTypeMapping TypeName="MvcAp.Models.SystemManuFunctions">
+              <MappingFragment StoreEntitySet="SystemManuFunctions">
+                <ScalarProperty Name="IsBlank" ColumnName="IsBlank" />
+                <ScalarProperty Name="AuthorizeFor" ColumnName="AuthorizeFor" />
+                <ScalarProperty Name="IsIndex" ColumnName="IsIndex" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemMenu">
+            <EntityTypeMapping TypeName="MvcAp.Models.SystemMenu">
+              <MappingFragment StoreEntitySet="SystemMenu">
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemRole">
+            <EntityTypeMapping TypeName="MvcAp.Models.SystemRole">
+              <MappingFragment StoreEntitySet="SystemRole">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemRoleMenus">
+            <EntityTypeMapping TypeName="MvcAp.Models.SystemRoleMenus">
+              <MappingFragment StoreEntitySet="SystemRoleMenus">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUserRoles">
+            <EntityTypeMapping TypeName="MvcAp.Models.SystemUserRoles">
+              <MappingFragment StoreEntitySet="SystemUserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="MvcAp.Models.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUser">
+            <EntityTypeMapping TypeName="MvcAp.Models.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="MvcAp.Models.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="QRCodePassword" ColumnName="QRCodePassword" />
+                <ScalarProperty Name="QRcodeMode" ColumnName="QRcodeMode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="IsChangeViewNum" ColumnName="IsChangeViewNum" />
+                <ScalarProperty Name="ViewNum" ColumnName="ViewNum" />
+                <ScalarProperty Name="TitleImgPath" ColumnName="TitleImgPath" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LimitedPw" ColumnName="LimitedPw" />
+                <ScalarProperty Name="IsPwLimited" ColumnName="IsPwLimited" />
+                <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+                <ScalarProperty Name="CfmEmailContent" ColumnName="CfmEmailContent" />
+                <ScalarProperty Name="SendNote" ColumnName="SendNote" />
+                <ScalarProperty Name="LimitedNum" ColumnName="LimitedNum" />
+                <ScalarProperty Name="IsNumLimited" ColumnName="IsNumLimited" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="SignEnd" ColumnName="SignEnd" />
+                <ScalarProperty Name="SignStart" ColumnName="SignStart" />
+                <ScalarProperty Name="EventEnd" ColumnName="EventEnd" />
+                <ScalarProperty Name="EventStart" ColumnName="EventStart" />
+                <ScalarProperty Name="MasterEmail" ColumnName="MasterEmail" />
+                <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agreement">
+            <EntityTypeMapping TypeName="MvcAp.Models.Agreement">
+              <MappingFragment StoreEntitySet="Agreement">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="28f9e9811cd24ff9ae4c5f29b9162300" Name="Diagram1">
+        <EntityTypeShape EntityType="MvcAp.Models.BUCatalogList" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.ColumnType" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.DbConfig" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.EventDropList" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.EventRegist" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.EventSign" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.MenuCategory" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.PostalData" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.SystemManuFunctions" Width="1.5" PointX="12.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.SystemMenu" Width="1.5" PointX="10" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.SystemRole" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.SystemRoleMenus" Width="1.5" PointX="12.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.SystemUserRoles" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.Department" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.SystemUser" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.Event" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcAp.Models.Agreement" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="MvcAp.Models.FK_EventSign_ColumnType" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_EventDropList_EventSign" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_SystemMenu_MenuCategory_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_SystemManuFunctions_SystemMenu_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_SystemRoleMenus_SystemMenu_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_SystemRoleMenus_SystemRole_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_SystemUserRoles_SystemRole_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_SystemUserRoles_SystemUser_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_Event_SystemUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_EventRegist_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcAp.Models.FK_EventSign_Event" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

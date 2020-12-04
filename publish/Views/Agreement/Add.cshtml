@@ -1,0 +1,153 @@
+﻿@model Agreement
+@{
+    ViewBag.MapPath = "Digital Agreement";
+    bool hasModel = true;
+    if (Model == null)
+    {
+        hasModel = false;
+    }
+}
+@section Heads{
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" />
+    <link href="~/Content/jquery.ui.datepicker.css" rel="stylesheet" />
+
+    @*<link href="~/Scripts/ueditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">*@
+
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            @(Model != null && Model.ID > 0 ? "Edit" : "Create")
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="main-form" role="form" class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right">Is Enable (Only One version can be enable)</label>
+                    <div class="col-sm-10">
+                        @{
+                            string isPublishCheck = "";
+                            if (hasModel && Model.IsPublish!=null)
+                            {
+                                if ((bool)Model.IsPublish)
+                                {
+                                    isPublishCheck = "checked";
+                                }
+                            }
+                        }
+                        <input class="pull-left cbx"  @isPublishCheck id="IsPublish" name="IsPublish" type="checkbox">
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.IsPublish)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right">Version</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Version, htmlAttributes: new { @class = "col-xs-10 col-sm-5 mvcap-digionly" })
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.Version)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right">Date</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="CreateDate" value="@(Model.ID > 0 ?((DateTime) Model.CreateDate).ToDefaultFormat() : DateTime.Today.ToDefaultFormat())">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right">Contents</label>
+                    <div class="col-sm-10">
+                        @*@Html.TextAreaFor(p => p.Contents, new { id = "Contents", @name = "Contents", @class = "col-xs-10 col-sm-5", rows = "5" })*@
+                        <script id="container" name="content" type="text/plain" style="width:100%;height:523px;">@Html.Raw(Model.Contents)</script>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-12">
+            <div class="clearfix form-actions">
+                <div class="text-center">
+                    @Html.HiddenFor(model => model.ID)
+                    <button class="btn btn-info" type="button" id="send">
+                        @Language.Save
+                    </button>
+                    &nbsp;
+                    <a class="btn" id="modal-btn-cancel" href="@Url.Action("Index")">
+                        @Language.Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
+    <script src="~/Scripts/mvcap.validate.js"></script>
+
+
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/editor_api.js"> </script>
+    <script type="text/javascript" src="~/Scripts/ueditor/lang/en/en.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.menu-Agreement').addClass('active');
+            MvcAp.Validate.BindDigiOnly();
+            var editor = UE.getEditor('container');
+
+            //editor.setContent('');
+
+            $('#CreateDate').datepicker({
+                changeMonth: true,
+                dateFormat: "yy/mm/dd",
+                onClose: function (selectedDate) {
+                }
+            });
+
+            $('#send').click(function () {
+                var Contents = editor.getContent();
+                var CreateDate = $('#CreateDate').val();
+                var Version = $('#Version').val();
+                if (!Contents) {
+                    alert('Contents is empty');
+                    return false;
+                }
+                if (!CreateDate) {
+                    alert('Date is empty');
+                    return false;
+                }
+                if (!Version) {
+                    alert('Version is empty');
+                    return false;
+                }
+
+                var formData = {};
+                formData['IsPublish'] = $('#IsPublish').prop('checked');
+                formData['CreateDate'] = CreateDate;
+                formData['Version'] = Version;
+                formData['ID'] = '@(Model != null && Model.ID > 0 ? Model.ID : 0)';
+                formData['Contents'] = Contents;
+
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "@(Model != null && Model.ID > 0 ? Url.Action("Edit") : Url.Action("Add"))",
+                    data: { data: formData },
+                    success: function (data) {
+                        if (!data.Success) {
+                            alert(data.Message);
+                        }
+                        else {
+                            location.href = '@Url.Action("Index")';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

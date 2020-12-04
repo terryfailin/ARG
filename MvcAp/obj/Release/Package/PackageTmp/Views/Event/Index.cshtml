@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.MapPath = "Activities";
+}
+@section Heads{
+    <link href="~/Content/jquery.ui.datepicker.css" rel="stylesheet" />
+}
+<div class="form-inline row">
+    <div class="col-xs-12 col-sm-12 TstyleDivPadding">
+        <label class="TstyleLblPadding">Activity Name</label>
+        <input type="text" class="search-text">
+        <label class="TstyleLblPadding">Activity Date</label>
+        <input type="text" id="Eventfrom" class="LIST-SOURCE-EventStart">
+        <label class="TstyleLblPadding">~</label>
+        <input type="text" id="Eventto" class="LIST-SOURCE-EventEnd m-l-10 ">
+    </div>
+    <div class="col-xs-12 col-sm-12 TstyleDivPadding">
+        <label class="TstyleLblPadding">Enroll Date</label>
+        <input type="text" id="Signfrom" class="LIST-SOURCE-SignStart">
+        <label class="TstyleLblPadding">~</label>
+        <input type="text" id="Signto" class="LIST-SOURCE-SignEnd m-l-10 ">
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-6">
+        <button class="btn btn-primary tool-btn search-btn">Search</button>
+        <button class="btn btn-sm btn-danger btn-delete">Delete Selection</button>
+    </div>
+    <div class="col-xs-6">
+        <a class="btn btn-sm btn-primary pull-right" id="add-dialog" href="@Url.Action("Add")">Create</a>
+    </div>
+</div>
+@Html.GenerateModal("modal-table")
+<div class="row gap">
+    <div class="col-xs-12 LIST-SOURCE">
+        @{ Html.RenderAction("List"); }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.menu-Event').addClass('active');
+            MvcAp.InitList();
+        })
+        var modalUrl = '';
+
+        $('#modal-table').on('shown.bs.modal', function () {
+            $(this).find('iframe').attr('src', modalUrl);
+        });
+
+        $('#modal-table').on('hide.bs.modal', function (e) {
+            $(this).find('iframe').attr("src", "");
+        });
+
+        $('iframe').load(function () {
+            $('.loading').hide();
+        });
+
+        $('.btn-delete').click(function () {
+            var cfm = confirm("All record for this event will be removed, are you sure?");
+            if (!cfm) {
+                return false;
+            }
+            var sourceArray = [];
+            $.each($('.cbx-row:checked'), function (index, obj) {
+                sourceArray.push($(obj).attr('sourceid'));
+            });
+
+            $.ajax
+            ({
+                type: "POST",
+                url: "@(Url.Action("Delete"))",
+                data: { data: sourceArray },
+                success: function (data) {
+                    if (!data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        location.reload();
+                    }
+                }
+            });
+        });
+       
+        function copyEvent(id) {
+
+            var sourceId = parseInt(id)
+
+            $.ajax
+            ({
+                type: "POST",
+                url: "@(Url.Action("Copy"))",
+                data: { sourceid: sourceId },
+                success: function (data) {
+                    if (!data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert("Copy event complete");
+                        location.reload();
+                    }
+                }
+            });
+        };
+
+        $('#Eventfrom').datepicker({
+            changeMonth: true,
+            dateFormat: "yy-mm-dd",
+            onClose: function (selectedDate) {
+                $('#Eventto').datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+        $('#Eventto').datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            dateFormat: "yy-mm-dd",
+            onClose: function (selectedDate) {
+                $('#Eventfrom').datepicker("option", "maxDate", selectedDate);
+            }
+        });
+        $('#Signfrom').datepicker({
+            changeMonth: true,
+            dateFormat: "yy-mm-dd",
+            onClose: function (selectedDate) {
+                $('#Signto').datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+        $('#Signto').datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            dateFormat: "yy-mm-dd",
+            onClose: function (selectedDate) {
+                $('#Signfrom').datepicker("option", "maxDate", selectedDate);
+            }
+        });
+    </script>
+}
+
+
+

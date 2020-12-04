@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Bayer_ARGModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="BUCatalogList">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.BUCatalogList">
+        <MappingFragment StoreEntitySet="BUCatalogList">
+          <ScalarProperty Name="DepId" ColumnName="DepId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ColumnType">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.ColumnType">
+        <MappingFragment StoreEntitySet="ColumnType">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DbConfig">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.DbConfig">
+        <MappingFragment StoreEntitySet="DbConfig">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="DepName" ColumnName="DepName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="QRCodePassword" ColumnName="QRCodePassword" />
+          <ScalarProperty Name="QRcodeMode" ColumnName="QRcodeMode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DepId" ColumnName="DepId" />
+          <ScalarProperty Name="IsChangeViewNum" ColumnName="IsChangeViewNum" />
+          <ScalarProperty Name="ViewNum" ColumnName="ViewNum" />
+          <ScalarProperty Name="TitleImgPath" ColumnName="TitleImgPath" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LimitedPw" ColumnName="LimitedPw" />
+          <ScalarProperty Name="IsPwLimited" ColumnName="IsPwLimited" />
+          <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+          <ScalarProperty Name="CfmEmailContent" ColumnName="CfmEmailContent" />
+          <ScalarProperty Name="SendNote" ColumnName="SendNote" />
+          <ScalarProperty Name="LimitedNum" ColumnName="LimitedNum" />
+          <ScalarProperty Name="IsNumLimited" ColumnName="IsNumLimited" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="SignEnd" ColumnName="SignEnd" />
+          <ScalarProperty Name="SignStart" ColumnName="SignStart" />
+          <ScalarProperty Name="EventEnd" ColumnName="EventEnd" />
+          <ScalarProperty Name="EventStart" ColumnName="EventStart" />
+          <ScalarProperty Name="MasterEmail" ColumnName="MasterEmail" />
+          <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventDropList">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.EventDropList">
+        <MappingFragment StoreEntitySet="EventDropList">
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="RowValue" ColumnName="RowValue" />
+          <ScalarProperty Name="EventSignId" ColumnName="EventSignId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventRegist">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.EventRegist">
+        <MappingFragment StoreEntitySet="EventRegist">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ContactDate" ColumnName="ContactDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsContact" ColumnName="IsContact" />
+          <ScalarProperty Name="IsAttend" ColumnName="IsAttend" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Text30" ColumnName="Text30" />
+          <ScalarProperty Name="Text29" ColumnName="Text29" />
+          <ScalarProperty Name="Text28" ColumnName="Text28" />
+          <ScalarProperty Name="Text27" ColumnName="Text27" />
+          <ScalarProperty Name="Text26" ColumnName="Text26" />
+          <ScalarProperty Name="Text25" ColumnName="Text25" />
+          <ScalarProperty Name="Text24" ColumnName="Text24" />
+          <ScalarProperty Name="Text23" ColumnName="Text23" />
+          <ScalarProperty Name="Text22" ColumnName="Text22" />
+          <ScalarProperty Name="Text21" ColumnName="Text21" />
+          <ScalarProperty Name="Text20" ColumnName="Text20" />
+          <ScalarProperty Name="Text19" ColumnName="Text19" />
+          <ScalarProperty Name="Text18" ColumnName="Text18" />
+          <ScalarProperty Name="Text17" ColumnName="Text17" />
+          <ScalarProperty Name="Text16" ColumnName="Text16" />
+          <ScalarProperty Name="Text15" ColumnName="Text15" />
+          <ScalarProperty Name="Text14" ColumnName="Text14" />
+          <ScalarProperty Name="Text13" ColumnName="Text13" />
+          <ScalarProperty Name="Text12" ColumnName="Text12" />
+          <ScalarProperty Name="Text11" ColumnName="Text11" />
+          <ScalarProperty Name="Text10" ColumnName="Text10" />
+          <ScalarProperty Name="Text09" ColumnName="Text09" />
+          <ScalarProperty Name="Text08" ColumnName="Text08" />
+          <ScalarProperty Name="Text07" ColumnName="Text07" />
+          <ScalarProperty Name="Text06" ColumnName="Text06" />
+          <ScalarProperty Name="Text05" ColumnName="Text05" />
+          <ScalarProperty Name="Text04" ColumnName="Text04" />
+          <ScalarProperty Name="Text03" ColumnName="Text03" />
+          <ScalarProperty Name="Text02" ColumnName="Text02" />
+          <ScalarProperty Name="Text01" ColumnName="Text01" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventSign">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.EventSign">
+        <MappingFragment StoreEntitySet="EventSign">
+          <ScalarProperty Name="UseType" ColumnName="UseType" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="MaxLen" ColumnName="MaxLen" />
+          <ScalarProperty Name="MinLen" ColumnName="MinLen" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuCategory">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.MenuCategory">
+        <MappingFragment StoreEntitySet="MenuCategory">
+          <ScalarProperty Name="IconName" ColumnName="IconName" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostalData">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.PostalData">
+        <MappingFragment StoreEntitySet="PostalData">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="CitySort" ColumnName="CitySort" />
+          <ScalarProperty Name="CountySort" ColumnName="CountySort" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemManuFunctions">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.SystemManuFunctions">
+        <MappingFragment StoreEntitySet="SystemManuFunctions">
+          <ScalarProperty Name="IsBlank" ColumnName="IsBlank" />
+          <ScalarProperty Name="AuthorizeFor" ColumnName="AuthorizeFor" />
+          <ScalarProperty Name="IsIndex" ColumnName="IsIndex" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemMenu">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.SystemMenu">
+        <MappingFragment StoreEntitySet="SystemMenu">
+          <ScalarProperty Name="IconName" ColumnName="IconName" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemRole">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.SystemRole">
+        <MappingFragment StoreEntitySet="SystemRole">
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemRoleMenus">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.SystemRoleMenus">
+        <MappingFragment StoreEntitySet="SystemRoleMenus">
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemUser">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.SystemUser">
+        <MappingFragment StoreEntitySet="SystemUser">
+          <ScalarProperty Name="DepId" ColumnName="DepId" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemUserRoles">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.SystemUserRoles">
+        <MappingFragment StoreEntitySet="SystemUserRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agreement">
+      <EntityTypeMapping TypeName="Bayer_ARGModel.Agreement">
+        <MappingFragment StoreEntitySet="Agreement">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

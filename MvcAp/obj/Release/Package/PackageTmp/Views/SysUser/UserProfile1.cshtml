@@ -1,0 +1,74 @@
+﻿@model UserViewModel
+@{
+    ViewBag.Title = "Profile";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="hr dotted"></div>
+        <div>
+            <form id="main-form" role="form" method="post">
+                <div id="user-profile-1" class="user-profile row">
+                    <div class="col-xs-12 col-sm-9">
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Account </div>
+                                <div class="profile-info-value">
+                                    <span class="editable">@Model.UserCode</span>
+                                    @Html.HiddenFor(model => model.UserCode, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Name </div>
+                                <div class="profile-info-value">
+                                    @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Email </div>
+                                <div class="profile-info-value">
+                                    @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>                            
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Password </div>
+                                <div class="profile-info-value">
+                                    @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Confirm Password </div>
+                                <div class="profile-info-value">
+                                    @Html.PasswordFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "col-xs-10 col-sm-5" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"></div>
+                                <div class="profile-info-value">
+                                    @Html.HiddenFor(model => model.ID)
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                        @Language.Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        if (ViewBag.SaveState == "success")
+        {
+            <script>
+                alert('儲存成功');
+            </script>
+        }
+    }
+}

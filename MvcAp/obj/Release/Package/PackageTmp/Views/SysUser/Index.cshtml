@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.MapPath = "User";
+}
+@section Heads{
+}
+<div class="row tool-bar">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label no-padding">Email</label>
+            <div class="col-md-8 input-group no-padding">
+                <input type="text" class="form-control search-text">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-2 control-label no-padding">Role</label>
+            <div class="col-md-8 input-group no-padding">
+                <select class="LIST-SOURCE-Role">
+                    <option value=""></option>
+                    @foreach (SystemRole item in ViewBag.Roles)
+                    {
+                        if (item.IsEnable)
+                        {
+                            <option value="@item.ID">@item.DisplayName</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label no-padding">Department</label>
+            <div class="col-md-7 input-group no-padding">
+                <select class="LIST-SOURCE-Department">                    
+                    <option value=""></option>
+                    @foreach (Department dep in ViewBag.Deps)
+                    {
+                        <option value="@dep.ID">@dep.DepName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-6">
+        <button class="btn btn-primary tool-btn search-btn">Search</button>
+        <button class="btn-delete btn btn-sm btn-danger">Delete Selection</button>
+        <button class="btn btn-sm btn-success" id="export">Export Excel</button>
+    </div>
+    <div class="col-xs-6">
+        <a class="btn btn-sm btn-primary pull-right" id="add-dialog" href="@Url.Action("Add", "SysUser")">Create</a>
+    </div>
+</div>
+@Html.GenerateModal("modal-table")
+<div class="row gap">
+    <div class="col-xs-12 LIST-SOURCE">
+        @{ Html.RenderAction("List"); }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script type="text/javascript">        
+        jQuery(function ($) {
+            $('.menu-User').addClass('active');
+            MvcAp.InitList();
+
+            $('#export').click(function (event) {
+                var requestdata = '';
+                var hrefVal = "@Url.Action("Export")";
+                $('select[class^=LIST-SOURCE-]').each(function () {
+                    var classname = $(this).attr('class').split(' ')[0];
+                    requestdata += '&' + classname + '=' + encodeURIComponent($(this).val());
+                });
+                $('input[class^=LIST-SOURCE-]').each(function () {
+                    var classname = $(this).attr('class').split(' ')[0];
+                    requestdata += '&' + classname + '=' + encodeURIComponent($(this).val());
+                });
+                if (hrefVal.indexOf("?") == -1) {
+                    hrefVal += "?ver=1";
+                }
+                location.href = hrefVal + requestdata;
+            });
+        })
+        var modalUrl = '';
+ 
+        $('#modal-table').on('shown.bs.modal', function () {
+            $(this).find('iframe').attr('src', modalUrl);
+        });
+
+        $('#modal-table').on('hide.bs.modal', function (e) {
+            $(this).find('iframe').attr("src", "");
+        });
+
+        $('iframe').load(function () {
+            $('.loading').hide();
+        });
+
+        $('.btn-delete').click(function () {
+            var sourceArray = [];
+            $.each($('.cbx-row:checked'), function (index, obj) {
+                sourceArray.push($(obj).attr('sourceid'));
+            });
+
+            $.ajax
+            ({
+                type: "POST",
+                url: "@(Url.Action("Disable"))",
+                data: { data: sourceArray },
+                success: function (data) {
+                    if (!data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        MvcAp.LoadList();
+                    }
+                }
+            });
+        });
+
+        $('#clear-dialog').click(function () {
+            if (confirm('是否確認重整快取?')) {
+                $.ajax
+                ({
+                    type: "POST",
+                    url: '@Url.Action("Clear")',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Message) {
+                            alert(data.Message);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}

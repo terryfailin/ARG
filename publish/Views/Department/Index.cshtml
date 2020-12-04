@@ -1,0 +1,113 @@
+﻿@model List<Department>
+@{
+    ViewBag.MapPath = "Department";
+    bool hasDep = false;
+    if (ViewBag.DepList != null)
+    {
+        hasDep = true;
+    }
+}
+<div class="row gap">
+    <div class="col-xs-12">
+        <table id="main-table" class="dataTable table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.Count > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            var TDid = item.ID;
+                            <tr>
+                                <td>
+                                    @item.ID
+                                </td>
+                                <td>
+                                    <input type="text" id="Dep_@TDid" value="@item.DepName" />
+                                </td>
+                                <td>
+                                    <div class="hidden-sm hidden-xs btn-group">
+                                        <a class="btn btn-sm btn-info btn-edit" sourceid="@(item.ID)">
+                                            <i class="ace-icon fa fa-check bigger-120"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger btn-delete" href="@Url.Action("Delete", "Department")?sourceid=@(item.ID)">
+                                            <i class="ace-icon fa fa-remove bigger-120"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="3" class="text-center no-data">@Language.NoData</td></tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td><input type="text" id="Dep_new" value="" /></td>
+                        <td>
+                            <a class="btn btn-sm btn-success btn-new">
+                                <i class="ace-icon fa fa-chevron-right bigger-120"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.btn-edit').click(function () {
+                var depName = $(this).parent().parent().prev().find("input[id^='Dep']").val();
+                var formData = new FormData();
+                formData.append('ID', $(this).attr('sourceid'));
+                formData.append('DepName', depName);
+
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "@(Url.Action("Edit"))",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (!data.Success) {
+                            alert(data.Message);
+                        } else {
+                            alert("Update Success");
+                        }
+                    }
+                });
+            });
+            $('.btn-new').click(function () {
+                var formData = new FormData();
+                formData.append('DepName', $('#Dep_new').val());
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "@(Url.Action("Add"))",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (!data.Success) {
+                            alert(data.Message);
+                        } else {
+                            alert("Create Success");
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+

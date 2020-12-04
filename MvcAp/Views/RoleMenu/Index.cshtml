@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "群組功能管理";
+}
+@section Heads{
+}
+<div class="row tool-bar">
+    <div class="col-xs-4">
+        <div class="input-group">
+            <input type="text" class="form-control search-text" placeholder="@Language.SearchFor">
+            <span class="input-group-btn">
+                <button class="btn btn-primary search-btn tool-btn">查詢</button>
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        @*<button class="btn btn-primary tool-btn pull-right" id="add-dialog">新增</button>*@
+    </div>
+</div>
+@Html.GenerateModal("modal-table", 800)
+<div class="row">
+    <div class="col-xs-12 LIST-SOURCE">
+        @{ Html.RenderAction("List"); }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            MvcAp.InitList();
+        })
+        var modalUrl = '';
+        $('#modal-table').on('shown.bs.modal', function () {
+            $(this).find('iframe').attr('src', modalUrl);
+        });
+        $('#modal-table').on('hide.bs.modal', function (e) {
+            $(this).find('iframe').attr("src", "");
+        });
+        $('iframe').load(function () {
+            $('.loading').hide();
+        });
+        $('.LIST-SOURCE').on('click', '.btn-edit', function (event) {
+            var sourceid = $(this).attr('sourceid');
+            modalUrl = '@Url.Action("Edit")' + "?sourceid=" + sourceid;
+            $('#modal-table').modal({ show: true });
+        });
+        $('.LIST-SOURCE').on('click', '.btn-delete', function (event) {
+            if (confirm('是否確認刪除?')) {
+                var sourceid = $(this).attr('sourceid');
+                $.ajax
+                ({
+                    type: "POST",
+                    url: '@Url.Action("Disable")',
+                    dataType: 'json',
+                    data: { sourceid: sourceid },
+                    success: function (data) {
+                        if (data.Message) {
+                            alert(data.Message);
+                        }
+                        MvcAp.LoadList();
+                    }
+                });
+            }
+        });       
+    </script>
+}

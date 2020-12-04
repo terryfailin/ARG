@@ -1,0 +1,73 @@
+﻿@model SystemSetting
+@{
+    ViewBag.MapPath = " Import User File";
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <form role="form" class="form-horizontal" method="post" enctype="multipart/form-data" action="">
+                <div class="form-group">
+                    <label class="col-sm-2  no-padding-right">Import user file, if the user exists in system, the system will ignore it</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="text-center">
+                        <input class="btn btn-primary" type="button" id="import" value="Import" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.menu-Import').addClass('active');
+
+            $('#import').click(function () {
+                var file = $('input[name=file]')[0].files[0];
+
+                if (file && file.size > 0) {
+                    switch (file.name.toLowerCase().split('.')[1]) {
+                        case "xls":
+                            break;
+                        case "xlsx":
+                            break;
+                        default:
+                            alert('檔案格式有誤');
+                            return false;
+                            break;
+                    }
+                }
+                else {
+                    alert('尚未選擇檔案');
+                    return false;
+                }
+                var formData = new FormData();
+                formData.append('file', file);
+                $('#import').prop('disabled', true);
+                $.ajax({
+                    url: '@Url.Action("Import")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        if (!result.Success) {
+                            alert(result.Message);
+                        }
+                        else {
+                            alert('Success!');
+                        }
+                        $('#import').prop('disabled', false);
+                    }
+                });
+            });
+        });
+    </script>
+}

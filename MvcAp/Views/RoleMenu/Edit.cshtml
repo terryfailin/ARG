@@ -1,0 +1,130 @@
+﻿@model SystemRole
+@{
+    Layout = "~/Views/Shared/_Empty.cshtml";
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            編輯
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="main-form" role="form" class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label class="col-sm-3 no-padding-right">名稱</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "col-xs-10", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12 col-md-10">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="p30"></th>
+                                        <th>授權</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.Menus != null)
+                                    {
+                                        foreach (var item in ViewBag.Menus)
+                                        {
+                                            var currentMenu = Model.SystemRoleMenus.FirstOrDefault(p => p.MenuId == item.ID);
+                                            bool read = false;
+                                            int roleMenuID = 0;
+                                            if (currentMenu != null)
+                                            {
+                                                roleMenuID = currentMenu.ID;
+                                                read = true;
+                                            }
+                                            <tr class="rolemenu" id="@(roleMenuID)" menuid="@item.ID">
+                                                <td class="select-all">
+                                                    @("[" + item.MenuCategory.Name + "]" + item.Name)
+                                                </td>
+                                                <td><input type="checkbox" class="cbx read" @(read ? "checked" : "") /></td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="text-center">
+                        @Html.HiddenFor(model => model.ID)
+                        <button class="btn btn-info" type="button" id="send">
+                            存檔
+                        </button>
+                        &nbsp;
+                        <a class="btn" id="modal-btn-cancel">
+                            取消
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#send').click(function () {
+                var data = {};
+                data["ID"] = '@Model.ID';
+                data["Name"] = $('#Name').val();
+                data["SystemRoleMenus"] = [];
+
+                $.each($('.rolemenu'), function (index, obj) {
+                    $tr = $(obj);
+                    var allowAuthorize = 0;
+                    if ($tr.find('.read').prop('checked')) {
+                        allowAuthorize = allowAuthorize | 1;
+                    }
+                    if (allowAuthorize > 0) {
+                        var vo = {};
+                        vo["ID"] = $tr.attr('id');
+                        vo["MenuId"] = $tr.attr('menuid');
+                        data["SystemRoleMenus"].push(vo);
+                    }
+                });
+
+                $.ajax
+                ({
+                    type: "POST",
+                    url: '@(Url.Action("Edit"))',
+                    dataType: 'json',
+                    data: { data: data },
+                    success: function (data) {
+                        if (!data.Success) {
+                            alert(data.Message);
+                        }
+                        else {
+                            parent.MvcAp.LoadList();
+
+                            MvcAp.ModalCancel($('#modal-btn-cancel'));
+                        }
+                    }
+                });
+            });
+
+            $('.select-all').click(function () {
+                var ckbs = $(this).parent().find('input[type=checkbox]');
+                var hasChecked = false;
+                $.each(ckbs, function (index, obj) {
+                    $obj = $(obj);
+                    if ($obj.prop('checked')) {
+                        hasChecked = true;
+                        return true;
+                    }
+                });
+                ckbs.prop('checked', !hasChecked);
+            });
+        });
+    </script>
+}

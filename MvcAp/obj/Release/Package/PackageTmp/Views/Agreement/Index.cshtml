@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.MapPath = "Digital Agreement";
+}
+<div class="row">
+    <div class="col-xs-6">
+        
+    </div>
+    <div class="col-xs-6">
+        <a class="btn btn-sm btn-primary pull-right ml-md" id="add-dialog" href="@Url.Action("Add")">Create</a>
+        <a class="btn btn-sm btn-danger pull-right ml-md" id="btn_Del">Delete Selection</a>
+    </div>
+</div>
+@Html.GenerateModal("modal-table")
+<div class="row gap">
+    <div class="col-xs-12 LIST-SOURCE">
+        @{ Html.RenderAction("List"); }
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.menu-Agreement').addClass('active');
+            MvcAp.InitList();
+
+            $('#btn_Del').click(function () {
+                var sourceArray = [];
+                $.each($('.cbx-row:checked'), function (index, obj) {
+                    sourceArray.push($(obj).attr('sourceid'));
+                });
+
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "@(Url.Action("Delete"))",
+                    data: { data: sourceArray },
+                    success: function (data) {
+                        if (!data.Success) {
+                            alert(data.Message);
+                        }
+                        else {
+                            MvcAp.LoadList();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+@model Event
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>@(string.IsNullOrEmpty(ViewBag.Title) ? AppHelper.ProjectName : ViewBag.Title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="/assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+</head>
+<body class="no-skin">
+    <div class="main-container" id="main-container">
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div class="error-container">
+                            <div class="well">
+                                <h1 class="grey lighter smaller">
+                                    <span class="blue bigger-125">
+                                        <i class="ace-icon fa fa-sitemap"></i>                                        
+                                    </span>
+                                    Event Not Found
+                                </h1>
+                                <hr>
+                                    <h3 class="lighter smaller">We looked everywhere but we couldn't find it!</h3>
+                                <hr>
+                                <div class="space"></div>
+
+                                <div class="center">
+                                    <a href="javascript:history.back()" class="btn btn-grey">
+                                        <i class="ace-icon fa fa-arrow-left"></i>
+                                        Go Back
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div>
+        </div>
+    </div>
+    <!-- ace scripts -->
+    <script src="/assets/js/ace-elements.min.js"></script>
+    <script src="/assets/js/ace.min.js"></script>
+</body>
+</html>

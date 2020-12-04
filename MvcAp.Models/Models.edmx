@@ -1,0 +1,1175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Bayer_ARGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="IsPublish" Type="bit" />
+          <Property Name="Version" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="BUCatalogList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DepId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColumnType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DbConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="KeyName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="EmailContent" Type="nvarchar(max)" />
+          <Property Name="MasterEmail" Type="nvarchar" MaxLength="60" />
+          <Property Name="EventStart" Type="datetime" />
+          <Property Name="EventEnd" Type="datetime" />
+          <Property Name="SignStart" Type="datetime" />
+          <Property Name="SignEnd" Type="datetime" />
+          <Property Name="IsOpen" Type="bit" Nullable="false" />
+          <Property Name="IsNumLimited" Type="bit" Nullable="false" />
+          <Property Name="LimitedNum" Type="int" />
+          <Property Name="SendNote" Type="tinyint" />
+          <Property Name="CfmEmailContent" Type="nvarchar(max)" />
+          <Property Name="Agreement" Type="nvarchar(max)" />
+          <Property Name="IsPwLimited" Type="bit" Nullable="false" />
+          <Property Name="LimitedPw" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TitleImgPath" Type="varchar" MaxLength="150" />
+          <Property Name="ViewNum" Type="int" />
+          <Property Name="IsChangeViewNum" Type="bit" Nullable="false" />
+          <Property Name="DepId" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="QRcodeMode" Type="int" />
+          <Property Name="QRCodePassword" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="EventDropList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventSignId" Type="int" Nullable="false" />
+          <Property Name="RowValue" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventRegist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="OrderNum" Type="int" />
+          <Property Name="Text01" Type="nvarchar(max)" />
+          <Property Name="Text02" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text03" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text04" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text05" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text06" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text07" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text08" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text09" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text10" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text11" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text12" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text13" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text14" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text15" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text16" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text17" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text18" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text19" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text20" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text21" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text22" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text23" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text24" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text25" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text26" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text27" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text28" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text29" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text30" Type="nvarchar" MaxLength="200" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="IsAttend" Type="bit" />
+          <Property Name="IsContact" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ContactDate" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="EventSign">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MinLen" Type="int" />
+          <Property Name="MaxLen" Type="int" />
+          <Property Name="IsRequired" Type="bit" />
+          <Property Name="OrderNum" Type="int" />
+          <Property Name="UseType" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IconName" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="PostalData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="County" Type="nvarchar" MaxLength="15" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="PostalCode" Type="smallint" />
+          <Property Name="CountySort" Type="tinyint" />
+          <Property Name="CitySort" Type="smallint" />
+          <Property Name="IsEnable" Type="bit" />
+        </EntityType>
+        <EntityType Name="SystemManuFunctions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ActionName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="IsIndex" Type="bit" Nullable="false" />
+          <Property Name="AuthorizeFor" Type="tinyint" />
+          <Property Name="IsBlank" Type="bit" />
+        </EntityType>
+        <EntityType Name="SystemMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="IconName" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="SystemRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CreateBy" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SystemRoleMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Account" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="smalldatetime" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="UpdatedDate" Type="smalldatetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UserCode" Type="varchar" MaxLength="10" />
+          <Property Name="DepId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemUserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Event_SystemUser">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventDropList_EventSign">
+          <End Role="EventSign" Type="Self.EventSign" Multiplicity="1" />
+          <End Role="EventDropList" Type="Self.EventDropList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventSign">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventDropList">
+              <PropertyRef Name="EventSignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventRegist_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="EventRegist" Type="Self.EventRegist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventRegist">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventSign_ColumnType">
+          <End Role="ColumnType" Type="Self.ColumnType" Multiplicity="1" />
+          <End Role="EventSign" Type="Self.EventSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColumnType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventSign">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventSign_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="EventSign" Type="Self.EventSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventSign">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemManuFunctions_SystemMenu_ID">
+          <End Role="SystemMenu" Type="Self.SystemMenu" Multiplicity="1" />
+          <End Role="SystemManuFunctions" Type="Self.SystemManuFunctions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemManuFunctions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemMenu_MenuCategory_ID">
+          <End Role="MenuCategory" Type="Self.MenuCategory" Multiplicity="1" />
+          <End Role="SystemMenu" Type="Self.SystemMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemMenu">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemRoleMenus_SystemMenu_ID">
+          <End Role="SystemMenu" Type="Self.SystemMenu" Multiplicity="1" />
+          <End Role="SystemRoleMenus" Type="Self.SystemRoleMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemRoleMenus">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemRoleMenus_SystemRole_ID">
+          <End Role="SystemRole" Type="Self.SystemRole" Multiplicity="1" />
+          <End Role="SystemRoleMenus" Type="Self.SystemRoleMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemRoleMenus">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemUserRoles_SystemRole_ID">
+          <End Role="SystemRole" Type="Self.SystemRole" Multiplicity="1" />
+          <End Role="SystemUserRoles" Type="Self.SystemUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemUserRoles_SystemUser_ID">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="1" />
+          <End Role="SystemUserRoles" Type="Self.SystemUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Bayer_ARGModelStoreContainer">
+          <EntitySet Name="Agreement" EntityType="Self.Agreement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BUCatalogList" EntityType="Self.BUCatalogList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColumnType" EntityType="Self.ColumnType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DbConfig" EntityType="Self.DbConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventDropList" EntityType="Self.EventDropList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventRegist" EntityType="Self.EventRegist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventSign" EntityType="Self.EventSign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuCategory" EntityType="Self.MenuCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostalData" EntityType="Self.PostalData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemManuFunctions" EntityType="Self.SystemManuFunctions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemMenu" EntityType="Self.SystemMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemRole" EntityType="Self.SystemRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemRoleMenus" EntityType="Self.SystemRoleMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUserRoles" EntityType="Self.SystemUserRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Event_SystemUser" Association="Self.FK_Event_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventDropList_EventSign" Association="Self.FK_EventDropList_EventSign">
+            <End Role="EventSign" EntitySet="EventSign" />
+            <End Role="EventDropList" EntitySet="EventDropList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventRegist_Event" Association="Self.FK_EventRegist_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventRegist" EntitySet="EventRegist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventSign_ColumnType" Association="Self.FK_EventSign_ColumnType">
+            <End Role="ColumnType" EntitySet="ColumnType" />
+            <End Role="EventSign" EntitySet="EventSign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventSign_Event" Association="Self.FK_EventSign_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventSign" EntitySet="EventSign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemManuFunctions_SystemMenu_ID" Association="Self.FK_SystemManuFunctions_SystemMenu_ID">
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+            <End Role="SystemManuFunctions" EntitySet="SystemManuFunctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemMenu_MenuCategory_ID" Association="Self.FK_SystemMenu_MenuCategory_ID">
+            <End Role="MenuCategory" EntitySet="MenuCategory" />
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemRoleMenus_SystemMenu_ID" Association="Self.FK_SystemRoleMenus_SystemMenu_ID">
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+            <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemRoleMenus_SystemRole_ID" Association="Self.FK_SystemRoleMenus_SystemRole_ID">
+            <End Role="SystemRole" EntitySet="SystemRole" />
+            <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemUserRoles_SystemRole_ID" Association="Self.FK_SystemUserRoles_SystemRole_ID">
+            <End Role="SystemRole" EntitySet="SystemRole" />
+            <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemUserRoles_SystemUser_ID" Association="Self.FK_SystemUserRoles_SystemUser_ID">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Bayer_ARGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BUCatalogList" EntityType="Bayer_ARGModel.BUCatalogList" />
+          <EntitySet Name="ColumnType" EntityType="Bayer_ARGModel.ColumnType" />
+          <EntitySet Name="DbConfig" EntityType="Bayer_ARGModel.DbConfig" />
+          <EntitySet Name="Department" EntityType="Bayer_ARGModel.Department" />
+          <EntitySet Name="Event" EntityType="Bayer_ARGModel.Event" />
+          <EntitySet Name="EventDropList" EntityType="Bayer_ARGModel.EventDropList" />
+          <EntitySet Name="EventRegist" EntityType="Bayer_ARGModel.EventRegist" />
+          <EntitySet Name="EventSign" EntityType="Bayer_ARGModel.EventSign" />
+          <EntitySet Name="MenuCategory" EntityType="Bayer_ARGModel.MenuCategory" />
+          <EntitySet Name="PostalData" EntityType="Bayer_ARGModel.PostalData" />
+          <EntitySet Name="SystemManuFunctions" EntityType="Bayer_ARGModel.SystemManuFunctions" />
+          <EntitySet Name="SystemMenu" EntityType="Bayer_ARGModel.SystemMenu" />
+          <EntitySet Name="SystemRole" EntityType="Bayer_ARGModel.SystemRole" />
+          <EntitySet Name="SystemRoleMenus" EntityType="Bayer_ARGModel.SystemRoleMenus" />
+          <EntitySet Name="SystemUser" EntityType="Bayer_ARGModel.SystemUser" />
+          <EntitySet Name="SystemUserRoles" EntityType="Bayer_ARGModel.SystemUserRoles" />
+          <AssociationSet Name="FK_EventSign_ColumnType" Association="Bayer_ARGModel.FK_EventSign_ColumnType">
+            <End Role="ColumnType" EntitySet="ColumnType" />
+            <End Role="EventSign" EntitySet="EventSign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_SystemUser" Association="Bayer_ARGModel.FK_Event_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventRegist_Event" Association="Bayer_ARGModel.FK_EventRegist_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventRegist" EntitySet="EventRegist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventSign_Event" Association="Bayer_ARGModel.FK_EventSign_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventSign" EntitySet="EventSign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventDropList_EventSign" Association="Bayer_ARGModel.FK_EventDropList_EventSign">
+            <End Role="EventSign" EntitySet="EventSign" />
+            <End Role="EventDropList" EntitySet="EventDropList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemMenu_MenuCategory_ID" Association="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID">
+            <End Role="MenuCategory" EntitySet="MenuCategory" />
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemManuFunctions_SystemMenu_ID" Association="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID">
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+            <End Role="SystemManuFunctions" EntitySet="SystemManuFunctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemRoleMenus_SystemMenu_ID" Association="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID">
+            <End Role="SystemMenu" EntitySet="SystemMenu" />
+            <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemRoleMenus_SystemRole_ID" Association="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID">
+            <End Role="SystemRole" EntitySet="SystemRole" />
+            <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemUserRoles_SystemRole_ID" Association="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID">
+            <End Role="SystemRole" EntitySet="SystemRole" />
+            <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemUserRoles_SystemUser_ID" Association="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+          </AssociationSet>
+          <EntitySet Name="Agreement" EntityType="Bayer_ARGModel.Agreement" />
+        </EntityContainer>
+        <EntityType Name="BUCatalogList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DepId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColumnType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EventSign" Relationship="Bayer_ARGModel.FK_EventSign_ColumnType" FromRole="ColumnType" ToRole="EventSign" />
+        </EntityType>
+        <EntityType Name="DbConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KeyName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MasterEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="EventStart" Type="DateTime" Precision="3" />
+          <Property Name="EventEnd" Type="DateTime" Precision="3" />
+          <Property Name="SignStart" Type="DateTime" Precision="3" />
+          <Property Name="SignEnd" Type="DateTime" Precision="3" />
+          <Property Name="IsOpen" Type="Boolean" Nullable="false" />
+          <Property Name="IsNumLimited" Type="Boolean" Nullable="false" />
+          <Property Name="LimitedNum" Type="Int32" />
+          <Property Name="SendNote" Type="Byte" />
+          <Property Name="CfmEmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Agreement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPwLimited" Type="Boolean" Nullable="false" />
+          <Property Name="LimitedPw" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TitleImgPath" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ViewNum" Type="Int32" />
+          <Property Name="IsChangeViewNum" Type="Boolean" Nullable="false" />
+          <Property Name="DepId" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SystemUser" Relationship="Bayer_ARGModel.FK_Event_SystemUser" FromRole="Event" ToRole="SystemUser" />
+          <NavigationProperty Name="EventRegist" Relationship="Bayer_ARGModel.FK_EventRegist_Event" FromRole="Event" ToRole="EventRegist" />
+          <NavigationProperty Name="EventSign" Relationship="Bayer_ARGModel.FK_EventSign_Event" FromRole="Event" ToRole="EventSign" />
+          <Property Name="QRcodeMode" Type="Int32" />
+          <Property Name="QRCodePassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EventDropList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventSignId" Type="Int32" Nullable="false" />
+          <Property Name="RowValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EventSign" Relationship="Bayer_ARGModel.FK_EventDropList_EventSign" FromRole="EventDropList" ToRole="EventSign" />
+        </EntityType>
+        <EntityType Name="EventRegist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="OrderNum" Type="Int32" />
+          <Property Name="Text01" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text02" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text03" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text04" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text05" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text06" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text07" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text08" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text09" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text10" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text11" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text12" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text13" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text14" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text15" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text16" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text17" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text18" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text19" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text20" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text21" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text22" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text23" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text24" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text25" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text26" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text27" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text28" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text29" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text30" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsAttend" Type="Boolean" />
+          <Property Name="IsContact" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ContactDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Event" Relationship="Bayer_ARGModel.FK_EventRegist_Event" FromRole="EventRegist" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="EventSign">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MinLen" Type="Int32" />
+          <Property Name="MaxLen" Type="Int32" />
+          <Property Name="IsRequired" Type="Boolean" />
+          <Property Name="OrderNum" Type="Int32" />
+          <Property Name="UseType" Type="Byte" />
+          <NavigationProperty Name="ColumnType" Relationship="Bayer_ARGModel.FK_EventSign_ColumnType" FromRole="EventSign" ToRole="ColumnType" />
+          <NavigationProperty Name="Event" Relationship="Bayer_ARGModel.FK_EventSign_Event" FromRole="EventSign" ToRole="Event" />
+          <NavigationProperty Name="EventDropList" Relationship="Bayer_ARGModel.FK_EventDropList_EventSign" FromRole="EventSign" ToRole="EventDropList" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IconName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SystemMenu" Relationship="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID" FromRole="MenuCategory" ToRole="SystemMenu" />
+        </EntityType>
+        <EntityType Name="PostalData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="County" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="Int16" />
+          <Property Name="CountySort" Type="Byte" />
+          <Property Name="CitySort" Type="Int16" />
+          <Property Name="IsEnable" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SystemManuFunctions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="IsIndex" Type="Boolean" Nullable="false" />
+          <Property Name="AuthorizeFor" Type="Byte" />
+          <Property Name="IsBlank" Type="Boolean" />
+          <NavigationProperty Name="SystemMenu" Relationship="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID" FromRole="SystemManuFunctions" ToRole="SystemMenu" />
+        </EntityType>
+        <EntityType Name="SystemMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="IconName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MenuCategory" Relationship="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID" FromRole="SystemMenu" ToRole="MenuCategory" />
+          <NavigationProperty Name="SystemManuFunctions" Relationship="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID" FromRole="SystemMenu" ToRole="SystemManuFunctions" />
+          <NavigationProperty Name="SystemRoleMenus" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID" FromRole="SystemMenu" ToRole="SystemRoleMenus" />
+        </EntityType>
+        <EntityType Name="SystemRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateBy" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SystemRoleMenus" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID" FromRole="SystemRole" ToRole="SystemRoleMenus" />
+          <NavigationProperty Name="SystemUserRoles" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID" FromRole="SystemRole" ToRole="SystemUserRoles" />
+        </EntityType>
+        <EntityType Name="SystemRoleMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SystemMenu" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID" FromRole="SystemRoleMenus" ToRole="SystemMenu" />
+          <NavigationProperty Name="SystemRole" Relationship="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID" FromRole="SystemRoleMenus" ToRole="SystemRole" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UserCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DepId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="Bayer_ARGModel.FK_Event_SystemUser" FromRole="SystemUser" ToRole="Event" />
+          <NavigationProperty Name="SystemUserRoles" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID" FromRole="SystemUser" ToRole="SystemUserRoles" />
+        </EntityType>
+        <EntityType Name="SystemUserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SystemRole" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID" FromRole="SystemUserRoles" ToRole="SystemRole" />
+          <NavigationProperty Name="SystemUser" Relationship="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID" FromRole="SystemUserRoles" ToRole="SystemUser" />
+        </EntityType>
+        <Association Name="FK_EventSign_ColumnType">
+          <End Type="Bayer_ARGModel.ColumnType" Role="ColumnType" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.EventSign" Role="EventSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColumnType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventSign">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_SystemUser">
+          <End Type="Bayer_ARGModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventRegist_Event">
+          <End Type="Bayer_ARGModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.EventRegist" Role="EventRegist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventRegist">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventSign_Event">
+          <End Type="Bayer_ARGModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.EventSign" Role="EventSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventSign">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventDropList_EventSign">
+          <End Type="Bayer_ARGModel.EventSign" Role="EventSign" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.EventDropList" Role="EventDropList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventSign">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventDropList">
+              <PropertyRef Name="EventSignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemMenu_MenuCategory_ID">
+          <End Type="Bayer_ARGModel.MenuCategory" Role="MenuCategory" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.SystemMenu" Role="SystemMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemMenu">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemManuFunctions_SystemMenu_ID">
+          <End Type="Bayer_ARGModel.SystemMenu" Role="SystemMenu" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.SystemManuFunctions" Role="SystemManuFunctions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemManuFunctions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemRoleMenus_SystemMenu_ID">
+          <End Type="Bayer_ARGModel.SystemMenu" Role="SystemMenu" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.SystemRoleMenus" Role="SystemRoleMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemRoleMenus">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemRoleMenus_SystemRole_ID">
+          <End Type="Bayer_ARGModel.SystemRole" Role="SystemRole" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.SystemRoleMenus" Role="SystemRoleMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemRoleMenus">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemUserRoles_SystemRole_ID">
+          <End Type="Bayer_ARGModel.SystemRole" Role="SystemRole" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.SystemUserRoles" Role="SystemUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemUserRoles_SystemUser_ID">
+          <End Type="Bayer_ARGModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="Bayer_ARGModel.SystemUserRoles" Role="SystemUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublish" Type="Boolean" />
+          <Property Name="Version" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Bayer_ARGModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BUCatalogList">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.BUCatalogList">
+              <MappingFragment StoreEntitySet="BUCatalogList">
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColumnType">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.ColumnType">
+              <MappingFragment StoreEntitySet="ColumnType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DbConfig">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.DbConfig">
+              <MappingFragment StoreEntitySet="DbConfig">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="QRCodePassword" ColumnName="QRCodePassword" />
+                <ScalarProperty Name="QRcodeMode" ColumnName="QRcodeMode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="IsChangeViewNum" ColumnName="IsChangeViewNum" />
+                <ScalarProperty Name="ViewNum" ColumnName="ViewNum" />
+                <ScalarProperty Name="TitleImgPath" ColumnName="TitleImgPath" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LimitedPw" ColumnName="LimitedPw" />
+                <ScalarProperty Name="IsPwLimited" ColumnName="IsPwLimited" />
+                <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+                <ScalarProperty Name="CfmEmailContent" ColumnName="CfmEmailContent" />
+                <ScalarProperty Name="SendNote" ColumnName="SendNote" />
+                <ScalarProperty Name="LimitedNum" ColumnName="LimitedNum" />
+                <ScalarProperty Name="IsNumLimited" ColumnName="IsNumLimited" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="SignEnd" ColumnName="SignEnd" />
+                <ScalarProperty Name="SignStart" ColumnName="SignStart" />
+                <ScalarProperty Name="EventEnd" ColumnName="EventEnd" />
+                <ScalarProperty Name="EventStart" ColumnName="EventStart" />
+                <ScalarProperty Name="MasterEmail" ColumnName="MasterEmail" />
+                <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventDropList">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.EventDropList">
+              <MappingFragment StoreEntitySet="EventDropList">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="RowValue" ColumnName="RowValue" />
+                <ScalarProperty Name="EventSignId" ColumnName="EventSignId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventRegist">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.EventRegist">
+              <MappingFragment StoreEntitySet="EventRegist">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContactDate" ColumnName="ContactDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsContact" ColumnName="IsContact" />
+                <ScalarProperty Name="IsAttend" ColumnName="IsAttend" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Text30" ColumnName="Text30" />
+                <ScalarProperty Name="Text29" ColumnName="Text29" />
+                <ScalarProperty Name="Text28" ColumnName="Text28" />
+                <ScalarProperty Name="Text27" ColumnName="Text27" />
+                <ScalarProperty Name="Text26" ColumnName="Text26" />
+                <ScalarProperty Name="Text25" ColumnName="Text25" />
+                <ScalarProperty Name="Text24" ColumnName="Text24" />
+                <ScalarProperty Name="Text23" ColumnName="Text23" />
+                <ScalarProperty Name="Text22" ColumnName="Text22" />
+                <ScalarProperty Name="Text21" ColumnName="Text21" />
+                <ScalarProperty Name="Text20" ColumnName="Text20" />
+                <ScalarProperty Name="Text19" ColumnName="Text19" />
+                <ScalarProperty Name="Text18" ColumnName="Text18" />
+                <ScalarProperty Name="Text17" ColumnName="Text17" />
+                <ScalarProperty Name="Text16" ColumnName="Text16" />
+                <ScalarProperty Name="Text15" ColumnName="Text15" />
+                <ScalarProperty Name="Text14" ColumnName="Text14" />
+                <ScalarProperty Name="Text13" ColumnName="Text13" />
+                <ScalarProperty Name="Text12" ColumnName="Text12" />
+                <ScalarProperty Name="Text11" ColumnName="Text11" />
+                <ScalarProperty Name="Text10" ColumnName="Text10" />
+                <ScalarProperty Name="Text09" ColumnName="Text09" />
+                <ScalarProperty Name="Text08" ColumnName="Text08" />
+                <ScalarProperty Name="Text07" ColumnName="Text07" />
+                <ScalarProperty Name="Text06" ColumnName="Text06" />
+                <ScalarProperty Name="Text05" ColumnName="Text05" />
+                <ScalarProperty Name="Text04" ColumnName="Text04" />
+                <ScalarProperty Name="Text03" ColumnName="Text03" />
+                <ScalarProperty Name="Text02" ColumnName="Text02" />
+                <ScalarProperty Name="Text01" ColumnName="Text01" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventSign">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.EventSign">
+              <MappingFragment StoreEntitySet="EventSign">
+                <ScalarProperty Name="UseType" ColumnName="UseType" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="MaxLen" ColumnName="MaxLen" />
+                <ScalarProperty Name="MinLen" ColumnName="MinLen" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCategory">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.MenuCategory">
+              <MappingFragment StoreEntitySet="MenuCategory">
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostalData">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.PostalData">
+              <MappingFragment StoreEntitySet="PostalData">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="CitySort" ColumnName="CitySort" />
+                <ScalarProperty Name="CountySort" ColumnName="CountySort" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemManuFunctions">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.SystemManuFunctions">
+              <MappingFragment StoreEntitySet="SystemManuFunctions">
+                <ScalarProperty Name="IsBlank" ColumnName="IsBlank" />
+                <ScalarProperty Name="AuthorizeFor" ColumnName="AuthorizeFor" />
+                <ScalarProperty Name="IsIndex" ColumnName="IsIndex" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemMenu">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.SystemMenu">
+              <MappingFragment StoreEntitySet="SystemMenu">
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemRole">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.SystemRole">
+              <MappingFragment StoreEntitySet="SystemRole">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemRoleMenus">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.SystemRoleMenus">
+              <MappingFragment StoreEntitySet="SystemRoleMenus">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUser">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUserRoles">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.SystemUserRoles">
+              <MappingFragment StoreEntitySet="SystemUserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agreement">
+            <EntityTypeMapping TypeName="Bayer_ARGModel.Agreement">
+              <MappingFragment StoreEntitySet="Agreement">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

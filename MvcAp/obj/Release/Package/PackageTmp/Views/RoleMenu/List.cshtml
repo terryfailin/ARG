@@ -1,0 +1,47 @@
+﻿@model IPagedList<SystemRole>
+@{
+    Layout = null;
+}
+@Ajax.SetContainer()
+<table id="main-table" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th>群組名稱</th>
+            <th>授權功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="hidden-sm hidden-xs btn-group">
+                                <button class="btn btn-sm btn-info btn-edit" sourceid="@item.ID">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @foreach (var menu in item.SystemRoleMenus.OrderBy(p => p.SystemMenu.CategoryID))
+                            {
+                                @("[" + menu.SystemMenu.MenuCategory.Name + "]" + menu.SystemMenu.Name) <br>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td colspan="" class="text-center no-data">@Language.NoData</td></tr>
+            }
+        }
+    </tbody>
+</table>
+@Ajax.PagerContainer()

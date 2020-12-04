@@ -1,0 +1,18 @@
+2018-08-06 14:16:34.4390 MvcAp.Controllers.AnnounceController UpdateEventSign：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AnnounceService.RegistEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AnnounceService.cs: 行 50
+   於 MvcAp.Controllers.AnnounceController.RegEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AnnounceController.cs: 行 87
+2018-08-06 14:18:50.4421 MvcAp.Controllers.AnnounceController UpdateEventSign：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AnnounceService.RegistEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AnnounceService.cs: 行 50
+   於 MvcAp.Controllers.AnnounceController.RegEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AnnounceController.cs: 行 87
+2018-08-06 14:21:29.2511 MvcAp.Controllers.AnnounceController UpdateEventSign：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AnnounceService.RegistEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AnnounceService.cs: 行 50
+   於 MvcAp.Controllers.AnnounceController.RegEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AnnounceController.cs: 行 87
+2018-08-06 14:22:46.3821 MvcAp.Controllers.AnnounceController UpdateEventSign：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AnnounceService.RegistEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AnnounceService.cs: 行 50
+   於 MvcAp.Controllers.AnnounceController.RegEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AnnounceController.cs: 行 87
+2018-08-06 14:27:27.9390 MvcAp.Controllers.AnnounceController UpdateEventSign：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AnnounceService.RegistEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AnnounceService.cs: 行 50
+   於 MvcAp.Controllers.AnnounceController.RegEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AnnounceController.cs: 行 87
+2018-08-06 14:28:41.1708 MvcAp.Controllers.AnnounceController UpdateEventSign：並未將物件參考設定為物件的執行個體。=>
+   於 MvcAp.Services.AnnounceService.RegistEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp.Services\AnnounceService.cs: 行 50
+   於 MvcAp.Controllers.AnnounceController.RegEvent(RegPost data) 於 F:\03_VSProject\V0110_Bayer_ARG\trunk\MvcAp\Controllers\AnnounceController.cs: 行 87

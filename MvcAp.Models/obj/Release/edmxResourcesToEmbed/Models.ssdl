@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Bayer_ARGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agreement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="IsPublish" Type="bit" />
+    <Property Name="Version" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="BUCatalogList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DepId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ColumnType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DbConfig">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="KeyName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="EmailContent" Type="nvarchar(max)" />
+    <Property Name="MasterEmail" Type="nvarchar" MaxLength="60" />
+    <Property Name="EventStart" Type="datetime" />
+    <Property Name="EventEnd" Type="datetime" />
+    <Property Name="SignStart" Type="datetime" />
+    <Property Name="SignEnd" Type="datetime" />
+    <Property Name="IsOpen" Type="bit" Nullable="false" />
+    <Property Name="IsNumLimited" Type="bit" Nullable="false" />
+    <Property Name="LimitedNum" Type="int" />
+    <Property Name="SendNote" Type="tinyint" />
+    <Property Name="CfmEmailContent" Type="nvarchar(max)" />
+    <Property Name="Agreement" Type="nvarchar(max)" />
+    <Property Name="IsPwLimited" Type="bit" Nullable="false" />
+    <Property Name="LimitedPw" Type="varchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="TitleImgPath" Type="varchar" MaxLength="150" />
+    <Property Name="ViewNum" Type="int" />
+    <Property Name="IsChangeViewNum" Type="bit" Nullable="false" />
+    <Property Name="DepId" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="QRcodeMode" Type="int" />
+    <Property Name="QRCodePassword" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="EventDropList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventSignId" Type="int" Nullable="false" />
+    <Property Name="RowValue" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventRegist">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="OrderNum" Type="int" />
+    <Property Name="Text01" Type="nvarchar(max)" />
+    <Property Name="Text02" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text03" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text04" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text05" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text06" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text07" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text08" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text09" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text10" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text11" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text12" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text13" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text14" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text15" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text16" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text17" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text18" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text19" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text20" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text21" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text22" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text23" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text24" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text25" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text26" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text27" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text28" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text29" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text30" Type="nvarchar" MaxLength="200" />
+    <Property Name="IP" Type="varchar" MaxLength="20" />
+    <Property Name="IsAttend" Type="bit" />
+    <Property Name="IsContact" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ContactDate" Type="datetime" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="EventSign">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="MinLen" Type="int" />
+    <Property Name="MaxLen" Type="int" />
+    <Property Name="IsRequired" Type="bit" />
+    <Property Name="OrderNum" Type="int" />
+    <Property Name="UseType" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="MenuCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="IconName" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="PostalData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="County" Type="nvarchar" MaxLength="15" />
+    <Property Name="City" Type="nvarchar" MaxLength="20" />
+    <Property Name="PostalCode" Type="smallint" />
+    <Property Name="CountySort" Type="tinyint" />
+    <Property Name="CitySort" Type="smallint" />
+    <Property Name="IsEnable" Type="bit" />
+  </EntityType>
+  <EntityType Name="SystemManuFunctions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ControllerName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ActionName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MenuID" Type="int" Nullable="false" />
+    <Property Name="IsIndex" Type="bit" Nullable="false" />
+    <Property Name="AuthorizeFor" Type="tinyint" />
+    <Property Name="IsBlank" Type="bit" />
+  </EntityType>
+  <EntityType Name="SystemMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="IconName" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="SystemRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="CreateBy" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SystemRoleMenus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="MenuId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Account" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="smalldatetime" />
+    <Property Name="CreateBy" Type="int" />
+    <Property Name="UpdatedDate" Type="smalldatetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UserCode" Type="varchar" MaxLength="10" />
+    <Property Name="DepId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemUserRoles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Event_SystemUser">
+    <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventDropList_EventSign">
+    <End Role="EventSign" Type="Self.EventSign" Multiplicity="1" />
+    <End Role="EventDropList" Type="Self.EventDropList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventSign">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventDropList">
+        <PropertyRef Name="EventSignId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventRegist_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="EventRegist" Type="Self.EventRegist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventRegist">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventSign_ColumnType">
+    <End Role="ColumnType" Type="Self.ColumnType" Multiplicity="1" />
+    <End Role="EventSign" Type="Self.EventSign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ColumnType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventSign">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventSign_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="EventSign" Type="Self.EventSign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventSign">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemManuFunctions_SystemMenu_ID">
+    <End Role="SystemMenu" Type="Self.SystemMenu" Multiplicity="1" />
+    <End Role="SystemManuFunctions" Type="Self.SystemManuFunctions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemManuFunctions">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemMenu_MenuCategory_ID">
+    <End Role="MenuCategory" Type="Self.MenuCategory" Multiplicity="1" />
+    <End Role="SystemMenu" Type="Self.SystemMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemMenu">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemRoleMenus_SystemMenu_ID">
+    <End Role="SystemMenu" Type="Self.SystemMenu" Multiplicity="1" />
+    <End Role="SystemRoleMenus" Type="Self.SystemRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemRoleMenus">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemRoleMenus_SystemRole_ID">
+    <End Role="SystemRole" Type="Self.SystemRole" Multiplicity="1" />
+    <End Role="SystemRoleMenus" Type="Self.SystemRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemRoleMenus">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUserRoles_SystemRole_ID">
+    <End Role="SystemRole" Type="Self.SystemRole" Multiplicity="1" />
+    <End Role="SystemUserRoles" Type="Self.SystemUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUserRoles_SystemUser_ID">
+    <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="1" />
+    <End Role="SystemUserRoles" Type="Self.SystemUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Bayer_ARGModelStoreContainer">
+    <EntitySet Name="Agreement" EntityType="Self.Agreement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BUCatalogList" EntityType="Self.BUCatalogList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ColumnType" EntityType="Self.ColumnType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DbConfig" EntityType="Self.DbConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventDropList" EntityType="Self.EventDropList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventRegist" EntityType="Self.EventRegist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventSign" EntityType="Self.EventSign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuCategory" EntityType="Self.MenuCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostalData" EntityType="Self.PostalData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemManuFunctions" EntityType="Self.SystemManuFunctions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemMenu" EntityType="Self.SystemMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemRole" EntityType="Self.SystemRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemRoleMenus" EntityType="Self.SystemRoleMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemUserRoles" EntityType="Self.SystemUserRoles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Event_SystemUser" Association="Self.FK_Event_SystemUser">
+      <End Role="SystemUser" EntitySet="SystemUser" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventDropList_EventSign" Association="Self.FK_EventDropList_EventSign">
+      <End Role="EventSign" EntitySet="EventSign" />
+      <End Role="EventDropList" EntitySet="EventDropList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventRegist_Event" Association="Self.FK_EventRegist_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventRegist" EntitySet="EventRegist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventSign_ColumnType" Association="Self.FK_EventSign_ColumnType">
+      <End Role="ColumnType" EntitySet="ColumnType" />
+      <End Role="EventSign" EntitySet="EventSign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventSign_Event" Association="Self.FK_EventSign_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventSign" EntitySet="EventSign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemManuFunctions_SystemMenu_ID" Association="Self.FK_SystemManuFunctions_SystemMenu_ID">
+      <End Role="SystemMenu" EntitySet="SystemMenu" />
+      <End Role="SystemManuFunctions" EntitySet="SystemManuFunctions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemMenu_MenuCategory_ID" Association="Self.FK_SystemMenu_MenuCategory_ID">
+      <End Role="MenuCategory" EntitySet="MenuCategory" />
+      <End Role="SystemMenu" EntitySet="SystemMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemRoleMenus_SystemMenu_ID" Association="Self.FK_SystemRoleMenus_SystemMenu_ID">
+      <End Role="SystemMenu" EntitySet="SystemMenu" />
+      <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemRoleMenus_SystemRole_ID" Association="Self.FK_SystemRoleMenus_SystemRole_ID">
+      <End Role="SystemRole" EntitySet="SystemRole" />
+      <End Role="SystemRoleMenus" EntitySet="SystemRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUserRoles_SystemRole_ID" Association="Self.FK_SystemUserRoles_SystemRole_ID">
+      <End Role="SystemRole" EntitySet="SystemRole" />
+      <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUserRoles_SystemUser_ID" Association="Self.FK_SystemUserRoles_SystemUser_ID">
+      <End Role="SystemUser" EntitySet="SystemUser" />
+      <End Role="SystemUserRoles" EntitySet="SystemUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,88 @@
+﻿@model IPagedList<Event>
+@{
+    Layout = null;
+    string displatStr = string.Empty;
+}
+@Ajax.SetContainer()
+<table id="main-table" class="dataTable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th><input type="checkbox" class="cbx select-all" /></th>
+            @Ajax.SortColumn("Name", "Name")
+            @Ajax.SortColumn("EventStart", "Start Date")
+            @Ajax.SortColumn("EventEnd", "End Date")
+            @Ajax.SortColumn("SignStart", "Enroll Start")
+            @Ajax.SortColumn("SignEnd", "Enroll End")
+            @Ajax.SortColumn("RegNum", "Num") 
+            <th> Is Enable</th>
+            <th style="width: 15%">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="cbx-row" sourceid="@item.ID" />
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.EventStart
+                        </td>
+                        <td>
+                            @item.EventEnd
+                        </td>
+                        <td>
+                            @item.SignStart
+                        </td>
+                        <td>
+                            @item.SignEnd
+                        </td>
+                        <td>
+                            @{
+                                int count = 0;
+                                foreach (var evReg in item.EventRegist)
+                                {
+                                    if (!string.IsNullOrWhiteSpace(evReg.Text01))
+                                    {
+                                        count++;
+                                    }
+                                }                                
+                            }
+                            @count
+                        </td>
+                        <td>
+                            @(item.IsOpen ? "YES": "NO")
+                        </td>
+                        <td>
+                            <div class="hidden-sm hidden-xs btn-group">
+                                <a class="btn btn-sm btn-info" href="@Url.Action("Edit", new { sourceid = item.ID })" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                                <a class="btn_Copy btn btn-sm btn-gold"  data-toggle="tooltip" data-placement="top" title="Copy" sourceid="@item.ID" onclick="copyEvent('@item.ID')">
+                                    <i class="ace-icon fa fa-copy bigger-120"></i>
+                                </a>
+                                <a class="btn btn-sm btn-warning" href="@Url.Action("RegList", new { sourceid = item.ID })" data-toggle="tooltip" data-placement="top" title="Enrollment List">
+                                    <i class="ace-icon fa fa-list-alt bigger-120"></i>
+                                </a>
+                                <a class="btn btn-sm btn-success" href="@Url.Action("ExportRegList", new { sourceid = item.ID })" data-toggle="tooltip" data-placement="top" title="Export Excel">
+                                    <i class="ace-icon fa fa-file-excel-o bigger-120"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td colspan="" class="text-center no-data">@Language.NoData</td></tr>
+            }
+        }
+    </tbody>
+</table>
+@Ajax.PagerContainer()

@@ -1,0 +1,234 @@
+﻿@model UserViewModel
+@{
+    ViewBag.MapPath = "User";
+    bool hasModel = false;
+    if (Model!=null)
+    {
+        hasModel = true;
+    }
+}
+@section Heads{
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" />
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            @(hasModel ? "Edit" : "Create")
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="main-form" role="form" class="form-horizontal" method="post">
+                <input hidden id="UserId" value="@(hasModel ? Model.ID : 0)"/>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right">*Account</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Account, htmlAttributes: new {@class = "col-xs-10 col-sm-5"})
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.Account)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right" for="Email"> *Email</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Email, htmlAttributes: new {@class = "col-xs-10 col-sm-5"})
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right" for="Password">* Password</label>
+                    <div class="col-sm-10">                        
+                        @Html.PasswordFor(model => model.Password, htmlAttributes: new {@class = "col-xs-10 col-sm-5"})
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right" for="ConfirmPassword">* Confirm Password</label>
+                    <div class="col-sm-10">
+                        @Html.PasswordFor(model => model.ConfirmPassword, htmlAttributes: new {@class = "col-xs-10 col-sm-5"})
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right" for="RoleID">Role</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownList("RoleID", (IEnumerable<SelectListItem>) ViewBag.Roles, new {@class = "col-xs-10 col-sm-5"})
+                        <span class="help-inline text-danger col-xs-12 col-sm-7">
+                            @Html.ValidationMessageFor(model => model.RoleID)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right" for="Department">Department</label>
+                    <div class="col-sm-10">
+                        <select id="DepId" class="col-xs-10 col-sm-5">
+                            <option value=""></option>
+                            @foreach (Department dep in ViewBag.Deps)
+                            {
+                                if (hasModel)
+                                {
+                                    if (Model.DepId == dep.ID)
+                                    {
+                                        <option value="@dep.ID" selected>@dep.DepName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@dep.ID">@dep.DepName</option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="@dep.ID">@dep.DepName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 no-padding-right" for="IsEnable">Is Enable</label>
+                    <div class="col-sm-10">
+                        <label>
+                            @{
+                                string isEnableStr = Model == null || Model.IsEnable ? "checked" : "";
+                                string isEnableVal = Model == null || Model.IsEnable ? "true" : "false";
+                            }
+                            <input name="IsEnable" id="IsEnable" class="ace ace-switch ace-switch-7" type="checkbox" @isEnableStr value="@isEnableVal">
+                            <span class="lbl" id="switch-IsEnable"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="text-center">
+                        @Html.HiddenFor(model => model.ID)
+                        <button class="btn btn-info" type="button" id="send">
+                            @Language.Save
+                        </button>
+                        &nbsp;
+                        <a class="btn" id="modal-btn-cancel" href="@Url.Action("Index", "SysUser")">
+                            @Language.Back
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="/assets/js/bootstrap-multiselect.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('#Account').on('blur',
+                function() {
+                    if ('@hasModel' == 'False') {
+                        $('#Email').val($(this).val());
+                    }
+                });
+            $('.menu-User').addClass('active');
+
+            $('.multiselect').multiselect({
+                //enableFiltering: true,
+                buttonClass: 'btn btn-white',
+                templates: {
+                    button: '<button type="button" class="multiselect dropdown-toggle col-xs-10 col-sm-5" data-toggle="dropdown"></button>',
+                    ul: '<ul class="multiselect-container dropdown-menu"></ul>',
+                    filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
+                    filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><i class="fa fa-times-circle red2"></i></button></span>',
+                    li: '<li><a href="javascript:void(0);"><label></label></a></li>',
+                    divider: '<li class="multiselect-item divider"></li>',
+                    liGroup: '<li class="multiselect-item group"><label class="multiselect-group"></label></li>'
+                },
+                buttonText: function (options, select) {
+                    var numberOfOptions = $(this).children('option').length;
+                    //var numberDisplayed = 2;
+
+                    if (options.length === 0) {
+                        return 'None';
+                    }
+                    else {
+                        //if (options.length > numberDisplayed) {
+                        //    if (options.length === numberOfOptions) {
+                        //        return ' All Selected';
+                        //    }
+                        //    return options.length + ' ' + nSelectedText;
+                        //} else {
+                        var selected = '';
+                        options.each(function () {
+                            var label = ($(this).attr('label') !== undefined) ? $(this).attr('label') : $(this).html();
+                            if (!selected) {
+                                selected = label;
+                            }
+                            else {
+                                selected += ',' + label;
+                            }
+                        });
+                        return selected.length > 30 ? selected.substring(0, 30) + '...' : selected;
+                        //}
+                    }
+                }
+            });
+
+            $('#switch-IsEnable').attr('value', $('#IsEnable').val());
+            $('#switch-IsEnable').click(function () {
+                var val = $(this).attr('value');
+                if (val == 'true') {
+                    $('#IsEnable').val('false');
+                    $(this).attr('value', 'false');
+                }
+                else {
+                    $('#IsEnable').val('true');
+                    $(this).attr('value', 'true');
+                }
+            });
+
+            $('#send').click(function () {
+                
+                var data = {};
+                data["Account"] = $('#Account').val();
+                data["Email"] = $('#Email').val();
+                data["Password"] = $('#Password').val();
+                data["ConfirmPassword"] = $('#ConfirmPassword').val();                
+                data["RoleID"] = $('#RoleID').val();
+                data["DepID"] = $('#DepId').val();
+                data["IsEnable"] = $('#IsEnable').val();
+                data["ID"] = $('#UserId').val();
+
+                var chkPwdStength = (String)(data["Password"]).match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,100})/);
+                var chkcfmPwdStength = (String)(data["ConfirmPassword"]).match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,100})/);
+                if (data["Password"] != data["ConfirmPassword"]) {
+                    alert('The confirmation password is wrong !');
+                    return false;
+                }
+                if (data["Password"] && (chkPwdStength == null || chkcfmPwdStength == null)) {
+                    alert('The password strength is not strong enough, please try another set');
+                    return false;
+                }
+
+                $('#send').prop('disabled', true);
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "@(hasModel ? Url.Action("Edit") : Url.Action("Add"))",
+                        data: { data: data },
+                        success: function (data) {
+                            $('#send').prop('disabled', false);
+                            if (!data.Success) {
+                                alert(data.Message);
+                            }
+                            else {
+                                location.href = '@Url.Action("Index", "SysUser")';
+                            }
+                        }
+                    });                
+            });
+        });
+    </script>
+}

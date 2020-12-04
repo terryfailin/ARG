@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb3b364e8d0445e4be2a488248908851" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Bayer_ARGModel.BUCatalogList" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.ColumnType" Width="1.5" PointX="10" PointY="3" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.DbConfig" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.Department" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.Event" Width="1.5" PointX="10" PointY="8.625" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.EventDropList" Width="1.5" PointX="14.5" PointY="7.75" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.EventRegist" Width="1.5" PointX="12.25" PointY="11.5" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.EventSign" Width="1.5" PointX="12.25" PointY="7.125" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.MenuCategory" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.PostalData" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.SystemManuFunctions" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.SystemMenu" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.SystemRole" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.SystemRoleMenus" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.SystemUser" Width="1.5" PointX="7.75" PointY="7.25" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.SystemUserRoles" Width="1.5" PointX="10" PointY="5.625" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_EventSign_ColumnType" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_Event_SystemUser" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_EventRegist_Event" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_EventSign_Event" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_EventDropList_EventSign" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_SystemMenu_MenuCategory_ID" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_SystemManuFunctions_SystemMenu_ID" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_SystemRoleMenus_SystemMenu_ID" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_SystemRoleMenus_SystemRole_ID" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_SystemUserRoles_SystemRole_ID" />
+        <AssociationConnector Association="Bayer_ARGModel.FK_SystemUserRoles_SystemUser_ID" />
+        <EntityTypeShape EntityType="Bayer_ARGModel.Agreement" Width="1.5" PointX="12.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

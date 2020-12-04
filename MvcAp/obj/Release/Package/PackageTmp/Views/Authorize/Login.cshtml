@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <title>@(string.IsNullOrEmpty(ViewBag.Title) ? AppHelper.ProjectName : ViewBag.Title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.min.css" />
+
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+    @Scripts.Render("~/bundles/backend")
+</head>
+<body class="login-layout light-login">
+    <div class="main-container">
+        <div class="main-content">
+            <div class="row" style="margin-top: 2%;">
+                <div class="col-sm-2 center">
+                    <img src="~/images/logo.png" style="max-height: 72px; max-width: 72px;" />
+                </div>
+                <div class="col-sm-8">
+                    <div class="login-container">
+                        <div class="center">
+                            <img src="~/images/ArgLogo.png"/>
+                        </div>
+                        <div class="space-6"></div>
+
+                        <div class="position-relative">
+                            <div id="login-box" class="login-box visible widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header lighter bigger" style="font-weight: 600;">
+                                            Please sign in
+                                        </h4>
+                                        <div class="space-6"></div>
+                                        <form id="main-form" action="@Url.Action("Login", "Authorize", new { ReturnUrl = ViewBag.ReturnUrl })" method="post">
+                                            <fieldset>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="text" class="form-control" placeholder="Account" name="account" autocomplete="off">
+                                                        <i class="ace-icon fa fa-user"></i>
+                                                    </span>
+                                                </label>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                                        <i class="ace-icon fa fa-lock"></i>
+                                                    </span>
+                                                </label>
+                                                <label class="block clearfix">
+                                                    @Html.MvcApValidationSummary()
+                                                </label>
+                                                <div class="space"></div>
+                                                <div class="clearfix">
+                                                    <button type="button" id="btn-login" class="width-100 pull-right btn btn-sm btn-primary">
+                                                        <i class="ace-icon fa fa-key"></i>
+                                                        <span class="bigger-110">Sign in</span>
+                                                    </button>
+                                                    @Html.AntiForgeryToken()
+                                                </div>
+                                                <div class="space-4"></div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var actionUrls = {};
+            var errorMsgs = {
+                Login: '@Language.ErrorMessage_Login',
+                ValidationCodeEmpty: '@Language.ErrorMessage_ValidationCodeEmpty',
+            };
+            MvcAp.Login.Initialize(actionUrls, errorMsgs);
+        });
+    </script>
+</body>
+</html>

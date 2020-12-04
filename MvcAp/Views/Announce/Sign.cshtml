@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+@using Microsoft.Ajax.Utilities
+@model Event
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>@(string.IsNullOrEmpty(ViewBag.Title) ? AppHelper.ProjectName : ViewBag.Title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="/assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" />
+
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css" />
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/assets/js/ace.min.js"></script>
+    <script src="~/assets/js/ace-elements.min.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+
+
+</head>
+<body class="login-layout light-login">
+    <input hidden="true" id="evId" value="@Model.ID" />
+    <input hidden="true" id="evCode" value="@ViewBag.eventCode" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-sm-offset-1">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="">
+                        <div class="left padding-32" style="margin-top:10px">
+                            <a class="btn btn-warning" href="@Url.Action("View", new { eventCode = Model.Code, userid = string.IsNullOrEmpty(ViewBag.userid.ToString()) ? 0 : ViewBag.userid })">
+                                <i class="ace-icon fa fa-reply bigger-110"></i>
+                                回介紹頁
+                            </a>
+                        </div>
+                        <div class="center">
+                            <h1>
+                                <span class="green" id="id-text2">@Model.Name</span>
+                            </h1>
+                            <h6 class="red" id="id-company-text">*為必填欄位</h6>
+                        </div>
+                        <div style="height: 15px"></div>
+                        <div class="form-group">
+                            <form id="signForm" role="form" class="form-horizontal" method="post">
+                                @foreach (var es in Model.EventSign)
+                                {
+                                    string lblPos = "col-md-4";
+                                    string inputPos = "col-md-8";
+                                    string isMust = (bool)es.IsRequired ? "isMust" : "";
+                                    string mustStar = (bool)es.IsRequired ? "*" : "";
+                                    string isReq = (bool)es.IsRequired ? "required" : "";
+                                    string isEmail = es.TypeId == 2 ? "IsEmail=true" : "";
+                                    if (es.UseType == 1)
+                                    {
+                                        lblPos = "col-sm-12";
+                                        inputPos = "col-sm-12";
+                                        if (es.TypeId == 4)
+                                        {
+                                            <div class="form-group">
+                                                <div class="@lblPos row">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-8">
+                                                        <label class="lead" for="ES_@es.ID">@es.Title</label>
+                                                        <i class="red lead">@mustStar</i>
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <div class="@inputPos row">
+                                                        <select class="col-xs-10 col-sm-5 form-control esData @isMust" name="ES_@es.ID" colName="@es.Title" @isReq>
+                                                            <option></option>
+                                                            @foreach (var drop in es.EventDropList)
+                                                            {
+                                                                <option value="@drop.ID"> @drop.RowValue</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group form-group-lg">
+                                                <div class="@lblPos row">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-8">
+                                                        <label class="no-padding-left lead" for="ES_@es.ID">@es.Title</label>
+                                                        <i class="red lead">@mustStar</i>
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                </div>
+                                                <div class="@inputPos row">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-8">
+                                                        <input name="ES_@es.ID" class="col-xs-10 col-sm-8 form-control esData @isMust" colName="@es.Title" @isEmail />
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (es.TypeId == 4)
+                                        {
+                                            <div class="form-group">
+                                                <div class="@lblPos">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-10">
+                                                        <label class="lead" for="ES_@es.ID">@es.Title</label>
+                                                        <i class="red lead">@mustStar</i>
+                                                    </div>
+                                                </div>
+                                                <div class="@inputPos">
+                                                    <div class="col-md-10">
+                                                        <select class="col-xs-10 col-sm-5 form-control esData @isMust" name="ES_@es.ID" colName="@es.Title @isReq ">
+                                                            <option></option>
+                                                            @foreach (var drop in es.EventDropList)
+                                                            {
+                                                                <option value="@drop.ID"> @drop.RowValue</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group form-group-lg">
+                                                <div class="@lblPos">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-10">
+                                                        <label class="lead" for="ES_@es.ID">@es.Title</label>
+                                                        <i class="red lead">@mustStar</i>
+                                                    </div>
+                                                </div>
+                                                <div class="@inputPos">
+                                                    <div class="col-md-10">
+                                                        <input name="ES_@es.ID" class="col-xs-10 col-sm-8 form-control esData @isMust" colName="@es.Title" @isReq @isEmail />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                                @if (!string.IsNullOrEmpty(Model.Agreement))
+                                {
+                                    <div class="form-group form-group-lg">
+                                        <div class="col-md-12 row" style="color: #000000">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <div class="col-sm-3">
+                                                    <input type="checkbox" id="agree" name="agree" value="1" class="col-sm-1 form-control" />
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <label for="agree" class="lead">請勾選同意電子同意書</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                        <div class="col-md-12 row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6 center">
+                                                <a id="agreeBtn" class="btn btn-white btn-warning bigger-150 popup-with-form" href="#popFrm">
+                                                    電子同意書內容
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-lg">
+                                        <div id="popFrm" class="white-popup mfp-hide matchEditor">
+                                            @Html.Raw(Model.Agreement)
+                                        </div>
+                                    </div>
+                                }
+
+                                <div class="form-group form-group-lg">
+                                    <div id="popComplete" class="white-popup mfp-hide matchEditor">
+                                        報名完成
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div style="height: 15px"></div>
+                        <div class="center">
+                            <button id="send" class="btn btn-primary bigger-110">
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                                送出
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div id="pw-modal" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="smaller lighter blue no-margin">請輸入活動密碼進入報名</h3>
+                            </div>
+
+                            <div class="modal-body">
+                                <input id="eventPw" type="password"/>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-sm btn-danger pull-right" style="margin-left: 5px;" onclick="history.go(-1);">
+                                    <i class="ace-icon fa fa-times"></i>
+                                    回上頁
+                                </button>
+                                <button id="btn_checkPw" class="btn btn-sm btn-success pull-right">
+                                    <i class="ace-icon fa fa-arrow-circle-o-right"></i>
+                                    進入活動
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+
+        </div><!-- /.row -->
+    </div>
+    <!-- ace scripts -->
+
+    <script src="/assets/js/ace-elements.min.js"></script>
+    <script src="/assets/js/ace.min.js"></script>
+    <script src="/assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            if ('@ViewBag.IsExpired' == 'True') {
+                alert('本活動報名已截止');
+                var link = '/Announce/View?eventCode=' + $('#evCode').val();
+                location.href = link;
+            }
+            if ('@Model.IsPwLimited'=='True') {
+                $('#pw-modal').modal({
+                    show: 'true'
+                });
+            }
+            $('#btn_checkPw').on('click',
+                function() {
+                    if ('@Model.LimitedPw' != '' &&
+                        '@Model.LimitedPw' != 'Undefined' &&
+                        $('#eventPw').val() == '@Model.LimitedPw') {
+                        $('#pw-modal').modal('hide');
+                    }
+                });
+            $('.popup-with-form').magnificPopup({
+                type: 'inline',
+                preloader: false,
+
+                // When elemened is focused, some mobile browsers in some cases zoom in
+                // It looks not nice, so we disable it:
+                callbacks: {
+                    beforeOpen: function () {
+                        if ($(window).width() < 700) {
+                            this.st.focus = false;
+                        } else {
+                            this.st.focus = '#name';
+                        }
+                    }
+                }
+            });
+
+            $('select').on('change',
+                function () {
+                    var selector = $(this);
+                    var options = $(this).find('option');
+                    var value = selector.val();
+                    options.each(function () {
+                        if ($(this).text() == selector.find('option[value="' + value + '"]').text()) {
+                            $(this).attr("selected", true);
+                        } else {
+                            $(this).attr("selected", false);
+                        }
+                    });
+                });
+
+            $('#send').click(function () {
+                if (!$('#agree').is(':checked')) {
+                    alert('請勾選同意書');
+                    return false;
+                }
+                var Email = '';
+                var addUrl = '@Url.Action("RegEvent")';
+                var formData = new FormData();
+                formData.append('EventId', $('#evId').val());
+
+                var regContent = '';
+                var isValidated = 'true';
+
+                $('.esData').each(function () {
+                    if (isValidated == 'false') {
+                        return false;
+                    }
+                    var $reg = $(this);
+                    var $regVal = $.trim($reg.val());
+
+                    if ($reg.prop('tagName') == 'INPUT') {
+                        var regTxt = $regVal;
+                        if (regTxt != undefined && regTxt != '') {
+                            if (regContent != '') {
+                                regContent += '^}';
+                            }
+                            regContent += $reg.attr('name').match(/[0-9]+/g) + '&=' + regTxt;
+                        } else {
+                            if ($reg.hasClass('isMust')) {
+                                alert($reg.attr('colName') + ' 為必填');
+                                $reg.focus();
+                                isValidated = 'false';
+                            }
+                        }
+                        if ($reg.attr('isemail') == 'true') {
+                            Email = $regVal;
+                        }
+                    } else {
+                        var regTxt = $reg.find(":selected").val();
+                        if (regTxt != undefined && regTxt != '') {
+                            if (regContent != '') {
+                                regContent += '^}';
+                            }
+                            regContent += $reg.attr('name').match(/[0-9]+/g) + '&=' + regTxt;
+                        } else {
+                            if ($reg.hasClass('isMust')) {
+                                alert($reg.attr('colName') + ' 為必填');
+                                $reg.focus();
+                                isValidated = 'false';
+                            }
+                        }
+                    }
+                });
+                if (isValidated == 'false') {
+                    return false;
+                }
+                var emailPattern = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+                if (!emailPattern.test(Email)) {
+                    alert('Email格式不正確');
+                    return false;
+                }
+                formData.append('RegContent', regContent);
+                formData.append('Email', Email);
+                var saveBtn = $(this).attr('disabled', true);
+                $.ajax
+                ({
+                    type: "POST",
+                    url: addUrl,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    timeout: 5000,
+                    error: function () {
+                        alert('System is busy, please try again later');
+                    },
+                    success: function (data) {
+                        saveBtn.attr('disabled', false);
+                        if (data.Message == 'Email Already Exist') {
+                            alert('This Email Already Regist');
+                            return false;
+                        }
+                        $.magnificPopup.open({
+                            type: 'inline',
+                            midClick: true,
+                            items: {
+                                src: '<div class="white-popup center"><h1 class="blue">報名完成</h1></div>',
+                                type: 'inline'
+                            },
+                            closeBtnInside: true,
+                            callbacks: {
+                                open: function () {
+                                    $.magnificPopup.instance.close = function () {
+                                        location.href = "@Url.Action("View", new { eventCode = Model.Code, userid = string.IsNullOrEmpty(ViewBag.userid.ToString()) ? 0 : ViewBag.userid })";
+                                        $.magnificPopup.proto.close.call(this);
+                                    };
+                                }
+                            }
+
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
